@@ -21,8 +21,15 @@ jobs:
         run: |
           python3 - << 'PYEOF'
           import json, os, glob
+          from datetime import datetime, timezone
 
-          index = {"version": 1, "templates": [], "featured": []}
+          index = {
+              "version": 1,
+              "updated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+              "repo_url": "https://github.com/neo3738-ai/agentfactory-templates",
+              "featured": ["deep-research", "code-reviewer", "story-writer"],
+              "templates": [],
+          }
           categories = set()
 
           for tpath in sorted(glob.glob("*/*/template.json")):
@@ -44,12 +51,16 @@ jobs:
                   "id": t.get("id", template_id),
                   "name": t.get("name", template_id),
                   "description": t.get("description", ""),
-                  "author": t.get("author", "community"),
+                  "author": t.get("author", "AgentFactory"),
                   "category": t.get("category", category),
                   "tags": t.get("tags", []),
                   "agent_count": len(t.get("agents", [])),
                   "download_url": f"{category}/{template_id}/template.json",
                   "readme_url": f"{category}/{template_id}/README.md" if has_readme else None,
+                  "featured": False,
+                  "rating_avg": 0.0,
+                  "rating_count": 0,
+                  "discussion_url": "",
               }
 
               index["templates"].append(entry)
