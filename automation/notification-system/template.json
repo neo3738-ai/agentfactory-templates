@@ -1,0 +1,45 @@
+{
+  "id": "notification-system",
+  "name": "Notification System Designer",
+  "category": "automation",
+  "description": "Design notification and alerting systems with routing rules",
+  "keywords": [
+    "notification",
+    "alert",
+    "webhook",
+    "slack",
+    "monitoring",
+    "trigger"
+  ],
+  "agents": [
+    {
+      "name": "Alert Designer",
+      "role": "architect",
+      "purpose": "Design notification routing and escalation rules",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Design a notification system with: event categories and severity levels, routing rules (who gets what), channel preferences (email, Slack, SMS, webhook), escalation policies, quiet hours and override rules, aggregation/deduplication logic, and template for each notification type. Include rate limiting and digest options."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Design System",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "event_types",
+    "channels"
+  ],
+  "suggestion_card": {
+    "title": "Notification System",
+    "subtitle": "Design alerting systems",
+    "prompt_template": "Design notifications for [event types]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

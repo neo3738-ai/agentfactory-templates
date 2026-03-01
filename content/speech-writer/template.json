@@ -1,0 +1,46 @@
+{
+  "id": "speech-writer",
+  "name": "Speech Writer",
+  "category": "content",
+  "description": "Write speeches for presentations, events, and occasions",
+  "keywords": [
+    "speech",
+    "presentation",
+    "talk",
+    "keynote",
+    "toast",
+    "address"
+  ],
+  "agents": [
+    {
+      "name": "Speech Writer",
+      "role": "writer",
+      "purpose": "Write a compelling speech tailored to the occasion",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a speech tailored to the occasion and audience. Include: strong opening hook, 3 main points with supporting stories/data, smooth transitions, memorable phrases, audience engagement moments, and a powerful closing. Add speaker notes for delivery tips. Estimate duration based on word count (~150 words per minute)."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Write Speech",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "occasion",
+    "audience",
+    "duration"
+  ],
+  "suggestion_card": {
+    "title": "Speech Writer",
+    "subtitle": "Write speeches for any occasion",
+    "prompt_template": "Write a speech for [occasion]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

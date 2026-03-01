@@ -1,0 +1,46 @@
+{
+  "id": "meeting-agenda",
+  "name": "Meeting Agenda Builder",
+  "category": "productivity",
+  "description": "Create structured meeting agendas with time allocations",
+  "keywords": [
+    "meeting",
+    "agenda",
+    "plan",
+    "prepare",
+    "structure",
+    "schedule"
+  ],
+  "agents": [
+    {
+      "name": "Agenda Builder",
+      "role": "planner",
+      "purpose": "Create a structured meeting agenda",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a meeting agenda with: meeting objective, attendee roles, time-boxed agenda items with owners, discussion questions for each item, decision points, and parking lot. Allocate time based on priority. Include a 5-min buffer."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Build Agenda",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "meeting_topic",
+    "duration",
+    "attendees"
+  ],
+  "suggestion_card": {
+    "title": "Meeting Agenda",
+    "subtitle": "Create structured agendas",
+    "prompt_template": "Create an agenda for a meeting about [topic]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

@@ -1,0 +1,58 @@
+{
+  "id": "presentation-outliner",
+  "name": "Presentation Outliner",
+  "category": "productivity",
+  "description": "Create structured presentation outlines with speaker notes",
+  "keywords": [
+    "presentation",
+    "slides",
+    "outline",
+    "powerpoint",
+    "keynote",
+    "deck"
+  ],
+  "agents": [
+    {
+      "name": "Presentation Planner",
+      "role": "planner",
+      "purpose": "Plan the presentation structure and flow",
+      "tools": [],
+      "system_prompt_hint": "Plan a presentation with logical flow. Determine: key message, audience needs, number of slides, and narrative arc. Use the rule of three for main points."
+    },
+    {
+      "name": "Slide Writer",
+      "role": "writer",
+      "purpose": "Write slide content and speaker notes",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write each slide with: title, 3-5 bullet points (not too wordy), speaker notes with talking points, and visual/diagram suggestions. Include title slide, agenda, main content, summary, and Q&A slide. Keep slides clean and focused."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Plan Structure",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Slides",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "topic",
+    "audience",
+    "duration"
+  ],
+  "suggestion_card": {
+    "title": "Presentation Outliner",
+    "subtitle": "Create presentation outlines",
+    "prompt_template": "Create a presentation about [topic]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

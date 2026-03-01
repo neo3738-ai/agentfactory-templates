@@ -1,0 +1,56 @@
+{
+  "id": "sop-writer",
+  "name": "SOP Writer",
+  "category": "productivity",
+  "description": "Write Standard Operating Procedures for any process",
+  "keywords": [
+    "sop",
+    "procedure",
+    "process",
+    "documentation",
+    "standard",
+    "operations"
+  ],
+  "agents": [
+    {
+      "name": "Process Analyzer",
+      "role": "analyst",
+      "purpose": "Analyze the process and identify all steps",
+      "tools": [],
+      "system_prompt_hint": "Analyze the described process. Identify all steps, decision points, inputs, outputs, roles, and potential failure modes. Map the process flow."
+    },
+    {
+      "name": "SOP Writer",
+      "role": "writer",
+      "purpose": "Write a formal Standard Operating Procedure",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write an SOP document with: purpose, scope, definitions, responsibilities, prerequisites, step-by-step procedures with numbered steps, decision trees, quality checks, troubleshooting guide, and revision history template. Follow ISO-style formatting."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Process",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write SOP",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "process_description"
+  ],
+  "suggestion_card": {
+    "title": "SOP Writer",
+    "subtitle": "Write standard procedures",
+    "prompt_template": "Write an SOP for [process]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

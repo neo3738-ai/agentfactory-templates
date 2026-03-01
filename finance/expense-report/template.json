@@ -1,0 +1,56 @@
+{
+  "id": "expense-report",
+  "name": "Expense Report Generator",
+  "category": "finance",
+  "description": "Generate formatted expense reports from raw expense data",
+  "keywords": [
+    "expense",
+    "report",
+    "receipt",
+    "reimbursement",
+    "business",
+    "travel"
+  ],
+  "agents": [
+    {
+      "name": "Expense Organizer",
+      "role": "analyst",
+      "purpose": "Organize and categorize expense data",
+      "tools": [],
+      "system_prompt_hint": "Parse the raw expense data. Categorize each expense (travel, meals, accommodation, transport, supplies, etc). Validate amounts and dates. Flag any items that may need receipts or exceed typical limits."
+    },
+    {
+      "name": "Report Writer",
+      "role": "writer",
+      "purpose": "Generate a formatted expense report",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Generate a professional expense report with: report period, purpose of expenses, itemized list with date/vendor/category/amount, category subtotals, grand total, policy compliance notes, and required approvals. Format as a clean table."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Organize Expenses",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Report",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "expense_data"
+  ],
+  "suggestion_card": {
+    "title": "Expense Report",
+    "subtitle": "Generate expense reports",
+    "prompt_template": "Create an expense report: [expenses]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

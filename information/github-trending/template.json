@@ -1,0 +1,56 @@
+{
+  "id": "github-trending",
+  "name": "GitHub Trending Digest",
+  "category": "information",
+  "description": "Get a digest of trending GitHub repositories",
+  "keywords": [
+    "github",
+    "trending",
+    "repository",
+    "open source",
+    "code",
+    "stars"
+  ],
+  "agents": [
+    {
+      "name": "GH Scanner",
+      "role": "researcher",
+      "purpose": "Fetch trending GitHub repositories",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Fetch trending repositories from GitHub trending page. Get repo names, descriptions, star counts, language, and contributors. Check daily, weekly trends."
+    },
+    {
+      "name": "Trend Reporter",
+      "role": "writer",
+      "purpose": "Write a trending repos digest",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a digest of trending repos grouped by language/category. Include: repo name, description, stars gained, why it's interesting, and potential use cases."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Fetch Trending",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Digest",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 17 * * *",
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "GitHub Trending",
+    "subtitle": "Trending repos digest",
+    "prompt_template": "Show me today's trending GitHub repos"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

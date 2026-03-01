@@ -1,0 +1,61 @@
+{
+  "id": "pet-care-planner",
+  "name": "Pet Care Planner",
+  "category": "personal",
+  "description": "Create personalized pet care routines and health schedules",
+  "keywords": [
+    "pet",
+    "care",
+    "dog",
+    "cat",
+    "vet",
+    "health",
+    "routine"
+  ],
+  "agents": [
+    {
+      "name": "Pet Care Researcher",
+      "role": "researcher",
+      "purpose": "Research breed-specific care requirements",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research care requirements for the specific pet breed. Find: dietary needs, exercise requirements, grooming schedule, common health issues, vaccination schedule, and age-specific care tips."
+    },
+    {
+      "name": "Care Plan Writer",
+      "role": "planner",
+      "purpose": "Create a comprehensive pet care plan",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a personalized pet care plan with: daily routine (feeding, exercise, grooming), weekly tasks, monthly tasks, annual vet visits and vaccinations, diet recommendations, training tips, and warning signs to watch for."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Plan Care",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "pet_type",
+    "breed",
+    "age"
+  ],
+  "suggestion_card": {
+    "title": "Pet Care",
+    "subtitle": "Create pet care routines",
+    "prompt_template": "Create a care plan for my [age] year old [breed]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

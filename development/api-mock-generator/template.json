@@ -1,0 +1,58 @@
+{
+  "id": "api-mock-generator",
+  "name": "API Mock Generator",
+  "category": "development",
+  "description": "Generate mock API servers and test data from API specs",
+  "keywords": [
+    "mock",
+    "api",
+    "test data",
+    "stub",
+    "fixture",
+    "fake"
+  ],
+  "agents": [
+    {
+      "name": "Spec Analyzer",
+      "role": "analyst",
+      "purpose": "Analyze the API specification",
+      "tools": [
+        "file_read"
+      ],
+      "system_prompt_hint": "Analyze the API spec (OpenAPI/Swagger or description). Identify all endpoints, request/response schemas, data types, and relationships between entities. Determine realistic data constraints."
+    },
+    {
+      "name": "Mock Generator",
+      "role": "developer",
+      "purpose": "Generate mock server code and test data",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Generate: mock server code with all endpoints returning realistic fake data, test fixture files (JSON), factory functions for generating test data, and edge case data (empty, maximum, unicode, etc). Match the specified framework/language."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Spec",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Generate Mocks",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "api_spec"
+  ],
+  "suggestion_card": {
+    "title": "API Mock Generator",
+    "subtitle": "Generate mock APIs and test data",
+    "prompt_template": "Generate mocks for this API: [spec or description]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

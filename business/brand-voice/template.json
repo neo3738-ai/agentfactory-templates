@@ -1,0 +1,59 @@
+{
+  "id": "brand-voice",
+  "name": "Brand Voice Guide Builder",
+  "category": "business",
+  "description": "Create comprehensive brand voice and tone guidelines",
+  "keywords": [
+    "brand",
+    "voice",
+    "tone",
+    "style",
+    "messaging",
+    "identity"
+  ],
+  "agents": [
+    {
+      "name": "Brand Researcher",
+      "role": "researcher",
+      "purpose": "Research the brand and its audience",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the brand: existing content, competitors' voices, target audience preferences, industry norms, and brand values. Analyze current content samples for existing voice patterns."
+    },
+    {
+      "name": "Guide Writer",
+      "role": "writer",
+      "purpose": "Create a brand voice guide",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a brand voice guide with: brand personality traits (3-5 adjectives with definitions), voice characteristics (with do/don't examples), tone variations by context (social, support, marketing, formal), vocabulary lists (preferred and avoided words), writing style rules, sample content in the brand voice, and a quick-reference cheat sheet for content creators."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Brand",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Guide",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "brand_name",
+    "values"
+  ],
+  "suggestion_card": {
+    "title": "Brand Voice",
+    "subtitle": "Create brand voice guides",
+    "prompt_template": "Create a brand voice guide for [brand]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

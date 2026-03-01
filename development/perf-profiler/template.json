@@ -1,0 +1,58 @@
+{
+  "id": "perf-profiler",
+  "name": "Performance Profiler",
+  "category": "development",
+  "description": "Analyze code for performance bottlenecks and optimization opportunities",
+  "keywords": [
+    "performance",
+    "optimize",
+    "profile",
+    "bottleneck",
+    "speed",
+    "benchmark"
+  ],
+  "agents": [
+    {
+      "name": "Perf Analyzer",
+      "role": "analyst",
+      "purpose": "Analyze code for performance issues",
+      "tools": [
+        "file_read"
+      ],
+      "system_prompt_hint": "Analyze the code for performance issues. Look for: N+1 queries, unnecessary allocations, blocking operations, missing indexes, inefficient algorithms, and memory leaks. Benchmark critical paths."
+    },
+    {
+      "name": "Optimization Advisor",
+      "role": "advisor",
+      "purpose": "Recommend specific performance optimizations",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a performance report with: identified bottlenecks ranked by impact, specific optimization recommendations with code examples, expected improvement estimates, trade-offs of each optimization, and benchmarking suggestions."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Performance",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Recommend",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "code_or_path"
+  ],
+  "suggestion_card": {
+    "title": "Performance Profiler",
+    "subtitle": "Find and fix performance issues",
+    "prompt_template": "Profile this code for performance: [code]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

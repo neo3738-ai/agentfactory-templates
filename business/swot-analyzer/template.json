@@ -1,0 +1,58 @@
+{
+  "id": "swot-analyzer",
+  "name": "SWOT Analyzer",
+  "category": "business",
+  "description": "Perform comprehensive SWOT analysis for businesses or projects",
+  "keywords": [
+    "SWOT",
+    "strength",
+    "weakness",
+    "opportunity",
+    "threat",
+    "strategy"
+  ],
+  "agents": [
+    {
+      "name": "SWOT Researcher",
+      "role": "researcher",
+      "purpose": "Research internal and external factors",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the business/project and its market. Identify: internal strengths and weaknesses, market opportunities, competitive threats, industry trends, and regulatory factors. Gather data to support each point."
+    },
+    {
+      "name": "SWOT Analyst",
+      "role": "analyst",
+      "purpose": "Create a detailed SWOT analysis with strategies",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a comprehensive SWOT analysis with: categorized findings (each with supporting evidence), SWOT matrix visualization (text), SO strategies (use strengths to capture opportunities), WO strategies (overcome weaknesses via opportunities), ST strategies (use strengths to mitigate threats), WT strategies (minimize weaknesses and avoid threats), and prioritized action items."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Analyze",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "business_or_project"
+  ],
+  "suggestion_card": {
+    "title": "SWOT Analysis",
+    "subtitle": "Perform SWOT analysis",
+    "prompt_template": "Do a SWOT analysis for [business/project]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

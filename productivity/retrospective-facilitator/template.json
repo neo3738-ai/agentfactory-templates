@@ -1,0 +1,45 @@
+{
+  "id": "retrospective-facilitator",
+  "name": "Retrospective Facilitator",
+  "category": "productivity",
+  "description": "Facilitate team retrospectives with structured frameworks",
+  "keywords": [
+    "retro",
+    "retrospective",
+    "sprint",
+    "agile",
+    "improve",
+    "team"
+  ],
+  "agents": [
+    {
+      "name": "Retro Facilitator",
+      "role": "coach",
+      "purpose": "Facilitate a structured retrospective",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Facilitate a retrospective using the chosen framework (Start/Stop/Continue, 4Ls, or Sailboat). Analyze the input for themes. Group similar items. Identify the top 3 actionable improvements. Create SMART action items with owners and deadlines."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Facilitate Retro",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "feedback",
+    "framework"
+  ],
+  "suggestion_card": {
+    "title": "Retrospective",
+    "subtitle": "Run team retrospectives",
+    "prompt_template": "Facilitate a retro: [what happened this sprint]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

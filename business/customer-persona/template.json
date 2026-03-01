@@ -1,0 +1,59 @@
+{
+  "id": "customer-persona",
+  "name": "Customer Persona Builder",
+  "category": "business",
+  "description": "Create detailed customer personas from market research",
+  "keywords": [
+    "persona",
+    "customer",
+    "avatar",
+    "segment",
+    "target",
+    "audience"
+  ],
+  "agents": [
+    {
+      "name": "Market Researcher",
+      "role": "researcher",
+      "purpose": "Research the target market and customer segments",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the target market. Find: demographics, psychographics, behaviors, pain points, buying patterns, media consumption, and decision-making factors. Look for survey data and market research reports."
+    },
+    {
+      "name": "Persona Builder",
+      "role": "writer",
+      "purpose": "Create detailed customer personas",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create 3-4 detailed customer personas with: name and photo description, demographics (age, income, education, location), psychographics (values, goals, fears), day-in-the-life narrative, pain points, buying triggers, objections, preferred channels, and a quote that captures their mindset. Include a persona comparison matrix."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Market",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Build Personas",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "product",
+    "market"
+  ],
+  "suggestion_card": {
+    "title": "Customer Personas",
+    "subtitle": "Build customer personas",
+    "prompt_template": "Create personas for [product] in [market]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

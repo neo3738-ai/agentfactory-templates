@@ -1,0 +1,44 @@
+{
+  "id": "ab-test-analyzer",
+  "name": "A/B Test Analyzer",
+  "category": "data",
+  "description": "Analyze A/B test results with statistical significance",
+  "keywords": [
+    "ab test",
+    "experiment",
+    "significance",
+    "conversion",
+    "hypothesis",
+    "statistics"
+  ],
+  "agents": [
+    {
+      "name": "Test Analyst",
+      "role": "analyst",
+      "purpose": "Analyze A/B test data with statistical rigor",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Analyze the A/B test results. Calculate: conversion rates for each variant, absolute and relative lift, statistical significance (chi-squared or z-test), confidence interval, p-value, required sample size analysis, and effect size. Determine if the test has reached significance. Provide recommendation: ship winner, continue testing, or redesign. Include visualizations (text-based charts)."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Test",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "test_data"
+  ],
+  "suggestion_card": {
+    "title": "A/B Test Analyzer",
+    "subtitle": "Analyze experiment results",
+    "prompt_template": "Analyze this A/B test: [control and variant data]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

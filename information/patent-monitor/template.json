@@ -1,0 +1,57 @@
+{
+  "id": "patent-monitor",
+  "name": "Patent Monitor",
+  "category": "information",
+  "description": "Monitor patent filings in your technology area",
+  "keywords": [
+    "patent",
+    "filing",
+    "IP",
+    "intellectual property",
+    "monitor"
+  ],
+  "agents": [
+    {
+      "name": "Patent Searcher",
+      "role": "researcher",
+      "purpose": "Search patent databases for new filings",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Search patent databases (Google Patents, USPTO) for recent filings matching the specified technology keywords. Extract titles, abstracts, filing dates, and assignees."
+    },
+    {
+      "name": "Patent Analyst",
+      "role": "analyst",
+      "purpose": "Analyze patent trends and relevance",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Analyze the patent filings. Identify trends, key players, and patents most relevant to the user. Highlight potential competitive threats and opportunities."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Search Patents",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Analyze",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 9 * * 1",
+  "user_fields": [
+    "technology_area"
+  ],
+  "suggestion_card": {
+    "title": "Patent Monitor",
+    "subtitle": "Track new patent filings weekly",
+    "prompt_template": "Monitor patents in [technology area]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

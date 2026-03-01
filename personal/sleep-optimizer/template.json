@@ -1,0 +1,56 @@
+{
+  "id": "sleep-optimizer",
+  "name": "Sleep Optimizer",
+  "category": "personal",
+  "description": "Analyze sleep habits and get personalized improvement advice",
+  "keywords": [
+    "sleep",
+    "insomnia",
+    "rest",
+    "circadian",
+    "routine",
+    "health"
+  ],
+  "agents": [
+    {
+      "name": "Sleep Analyst",
+      "role": "analyst",
+      "purpose": "Analyze sleep patterns and identify issues",
+      "tools": [],
+      "system_prompt_hint": "Analyze the reported sleep data: bedtime, wake time, sleep quality, disruptions, caffeine/screen habits, and environment. Identify issues affecting sleep quality."
+    },
+    {
+      "name": "Sleep Coach",
+      "role": "coach",
+      "purpose": "Provide personalized sleep improvement advice",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a personalized sleep improvement plan with: sleep hygiene audit, specific recommendations ranked by impact, ideal sleep schedule based on chronotype, evening routine design, bedroom environment optimization, and a 2-week gradual improvement plan. Cite sleep science research."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Sleep",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Coach",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "sleep_data"
+  ],
+  "suggestion_card": {
+    "title": "Sleep Optimizer",
+    "subtitle": "Improve your sleep quality",
+    "prompt_template": "Help me improve my sleep: [sleep habits]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

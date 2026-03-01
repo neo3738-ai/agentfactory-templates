@@ -1,0 +1,44 @@
+{
+  "id": "math-tutor",
+  "name": "Math Tutor",
+  "category": "learning",
+  "description": "Get step-by-step explanations for math problems",
+  "keywords": [
+    "math",
+    "tutor",
+    "calculus",
+    "algebra",
+    "statistics",
+    "equation"
+  ],
+  "agents": [
+    {
+      "name": "Math Tutor",
+      "role": "teacher",
+      "purpose": "Solve and explain math problems step by step",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Solve the math problem step by step. For each step: state what you're doing, why, and show the work. Use multiple approaches when possible. Relate to real-world applications. Provide similar practice problems at the end. Adapt explanations to the student's level."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Solve & Explain",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "problem"
+  ],
+  "suggestion_card": {
+    "title": "Math Tutor",
+    "subtitle": "Step-by-step math help",
+    "prompt_template": "Help me solve: [math problem]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

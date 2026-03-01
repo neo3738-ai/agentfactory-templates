@@ -1,0 +1,56 @@
+{
+  "id": "case-study-writer",
+  "name": "Case Study Writer",
+  "category": "content",
+  "description": "Write compelling case studies from client success stories",
+  "keywords": [
+    "case study",
+    "success",
+    "client",
+    "testimonial",
+    "results",
+    "story"
+  ],
+  "agents": [
+    {
+      "name": "Story Extractor",
+      "role": "analyst",
+      "purpose": "Extract the narrative arc from the raw data",
+      "tools": [],
+      "system_prompt_hint": "Analyze the provided case study data. Identify: the client's challenge, the solution implemented, key results/metrics, and the transformation story. Find the most compelling narrative angle."
+    },
+    {
+      "name": "Case Study Writer",
+      "role": "writer",
+      "purpose": "Write a polished case study",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a professional case study with: headline with results, client overview, challenge section, solution section, implementation details, results with specific metrics, client quote placeholder, and key takeaways. Make it scannable with headers and pull quotes."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Extract Story",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Case Study",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "client_data"
+  ],
+  "suggestion_card": {
+    "title": "Case Study",
+    "subtitle": "Write compelling case studies",
+    "prompt_template": "Write a case study about [client success]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

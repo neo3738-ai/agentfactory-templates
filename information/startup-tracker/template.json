@@ -1,0 +1,56 @@
+{
+  "id": "startup-tracker",
+  "name": "Startup Funding Tracker",
+  "category": "information",
+  "description": "Track recent startup funding rounds and acquisitions",
+  "keywords": [
+    "startup",
+    "funding",
+    "venture",
+    "investment",
+    "acquisition",
+    "series"
+  ],
+  "agents": [
+    {
+      "name": "Funding Scanner",
+      "role": "researcher",
+      "purpose": "Scan for recent funding announcements",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Search TechCrunch, Crunchbase news, and startup media for recent funding rounds. Find company names, round sizes, investors, valuations, and what the startup does."
+    },
+    {
+      "name": "Funding Reporter",
+      "role": "writer",
+      "purpose": "Write a funding activity report",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a funding report organized by sector. Include: company, round type, amount, key investors, and brief company description. Highlight notable trends and largest rounds."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Scan Funding",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Report",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 9 * * 1",
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Startup Tracker",
+    "subtitle": "Track startup funding rounds",
+    "prompt_template": "Show me this week's startup funding news"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

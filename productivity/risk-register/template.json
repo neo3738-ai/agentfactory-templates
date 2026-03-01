@@ -1,0 +1,56 @@
+{
+  "id": "risk-register",
+  "name": "Risk Register Builder",
+  "category": "productivity",
+  "description": "Create and manage project risk registers",
+  "keywords": [
+    "risk",
+    "register",
+    "mitigation",
+    "assessment",
+    "project",
+    "management"
+  ],
+  "agents": [
+    {
+      "name": "Risk Analyst",
+      "role": "analyst",
+      "purpose": "Identify and assess project risks",
+      "tools": [],
+      "system_prompt_hint": "Identify potential risks across categories: technical, schedule, resource, external, and scope. For each risk, assess probability (1-5), impact (1-5), and calculate risk score. Suggest risk owners."
+    },
+    {
+      "name": "Mitigation Planner",
+      "role": "planner",
+      "purpose": "Create mitigation and contingency plans",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a risk register table with: risk ID, description, category, probability, impact, risk score, owner, mitigation strategy, contingency plan, and triggers. Prioritize by risk score. Include a risk heat map description."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Identify Risks",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Plan Mitigations",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "project_description"
+  ],
+  "suggestion_card": {
+    "title": "Risk Register",
+    "subtitle": "Build project risk registers",
+    "prompt_template": "Create a risk register for [project]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

@@ -1,0 +1,56 @@
+{
+  "id": "time-audit",
+  "name": "Time Audit Analyzer",
+  "category": "productivity",
+  "description": "Analyze how you spend time and find optimization opportunities",
+  "keywords": [
+    "time",
+    "audit",
+    "productivity",
+    "efficiency",
+    "schedule",
+    "optimize"
+  ],
+  "agents": [
+    {
+      "name": "Time Analyst",
+      "role": "analyst",
+      "purpose": "Analyze time usage data and identify patterns",
+      "tools": [],
+      "system_prompt_hint": "Analyze the time data provided. Categorize activities (deep work, meetings, admin, breaks, etc). Calculate time allocation percentages. Identify time wasters, context switches, and productive patterns."
+    },
+    {
+      "name": "Productivity Coach",
+      "role": "coach",
+      "purpose": "Provide actionable time optimization advice",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a time audit report with: current time allocation breakdown, comparison to ideal ratios, top 3 time wasters, specific optimization recommendations, suggested schedule restructure, and tools/techniques to implement. Include a sample optimized daily schedule."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Time",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Coach",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "time_data"
+  ],
+  "suggestion_card": {
+    "title": "Time Audit",
+    "subtitle": "Analyze and optimize time usage",
+    "prompt_template": "Audit my time usage: [how I spent my week]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

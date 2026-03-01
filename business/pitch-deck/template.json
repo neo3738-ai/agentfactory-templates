@@ -1,0 +1,59 @@
+{
+  "id": "pitch-deck",
+  "name": "Pitch Deck Builder",
+  "category": "business",
+  "description": "Create compelling pitch deck outlines for investors or stakeholders",
+  "keywords": [
+    "pitch",
+    "deck",
+    "investor",
+    "startup",
+    "fundraise",
+    "presentation"
+  ],
+  "agents": [
+    {
+      "name": "Pitch Researcher",
+      "role": "researcher",
+      "purpose": "Research the market and competitive landscape",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the market for the pitch: market size (TAM/SAM/SOM), growth rate, key competitors, industry trends, and comparable funding rounds. Find data points that strengthen the pitch narrative."
+    },
+    {
+      "name": "Deck Writer",
+      "role": "writer",
+      "purpose": "Write the pitch deck content slide by slide",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write pitch deck content for 12-15 slides: title, problem, solution, market opportunity (with TAM/SAM/SOM), business model, traction/metrics, competitive advantages, competitive landscape, go-to-market strategy, team, financial projections, ask/use of funds, and closing. Each slide: headline, 3-5 bullets, speaker notes, and visual suggestion."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Market",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Deck",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "company",
+    "product"
+  ],
+  "suggestion_card": {
+    "title": "Pitch Deck",
+    "subtitle": "Build investor pitch decks",
+    "prompt_template": "Create a pitch deck for [company/product]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

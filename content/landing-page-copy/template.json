@@ -1,0 +1,59 @@
+{
+  "id": "landing-page-copy",
+  "name": "Landing Page Copywriter",
+  "category": "content",
+  "description": "Write high-converting landing page copy",
+  "keywords": [
+    "landing page",
+    "copy",
+    "conversion",
+    "marketing",
+    "website",
+    "sales"
+  ],
+  "agents": [
+    {
+      "name": "Market Researcher",
+      "role": "researcher",
+      "purpose": "Research the market and competitor landing pages",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research competitor landing pages for similar products. Identify winning headlines, value propositions, social proof strategies, and CTA patterns. Understand the target audience's pain points."
+    },
+    {
+      "name": "Landing Page Writer",
+      "role": "writer",
+      "purpose": "Write conversion-optimized landing page copy",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write landing page copy sections: hero headline + subheadline, value proposition, 3 key benefits with supporting copy, social proof section, features list, FAQ section, and CTA sections. Include multiple headline variants for A/B testing."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Market",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Copy",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "product",
+    "audience"
+  ],
+  "suggestion_card": {
+    "title": "Landing Page Copy",
+    "subtitle": "Write high-converting page copy",
+    "prompt_template": "Write landing page copy for [product]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

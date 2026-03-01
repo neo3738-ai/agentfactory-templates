@@ -1,0 +1,45 @@
+{
+  "id": "okr-generator",
+  "name": "OKR Generator",
+  "category": "productivity",
+  "description": "Generate OKRs (Objectives and Key Results) for teams or individuals",
+  "keywords": [
+    "okr",
+    "objective",
+    "key result",
+    "goal",
+    "metric",
+    "performance"
+  ],
+  "agents": [
+    {
+      "name": "OKR Architect",
+      "role": "planner",
+      "purpose": "Design meaningful OKRs aligned with strategy",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create 3-5 objectives with 3-4 key results each. Make objectives inspiring and ambitious. Make key results specific, measurable, and time-bound. Include baseline metrics, target values, and suggested initiatives for each KR. Score difficulty 1-10."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Generate OKRs",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "focus_area",
+    "timeframe"
+  ],
+  "suggestion_card": {
+    "title": "OKR Generator",
+    "subtitle": "Create OKRs for teams",
+    "prompt_template": "Generate OKRs for [team/focus area]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

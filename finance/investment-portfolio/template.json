@@ -1,0 +1,56 @@
+{
+  "id": "investment-portfolio",
+  "name": "Portfolio Analyzer",
+  "category": "finance",
+  "description": "Analyze investment portfolio allocation and suggest rebalancing",
+  "keywords": [
+    "portfolio",
+    "investment",
+    "allocation",
+    "rebalance",
+    "diversification",
+    "asset"
+  ],
+  "agents": [
+    {
+      "name": "Portfolio Analyst",
+      "role": "analyst",
+      "purpose": "Analyze portfolio composition and risk",
+      "tools": [],
+      "system_prompt_hint": "Analyze the portfolio holdings. Calculate: asset allocation percentages, sector concentration, geographic diversification, risk metrics, and deviation from target allocation. Identify overweight and underweight positions."
+    },
+    {
+      "name": "Rebalance Advisor",
+      "role": "advisor",
+      "purpose": "Suggest portfolio rebalancing actions",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a portfolio analysis report with: current allocation pie chart (text), risk assessment, comparison to target allocation, specific rebalancing trades needed, tax-loss harvesting opportunities, and recommendations for improved diversification. Include standard investment disclaimer."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Portfolio",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Recommend",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "holdings"
+  ],
+  "suggestion_card": {
+    "title": "Portfolio Analyzer",
+    "subtitle": "Analyze investment portfolios",
+    "prompt_template": "Analyze my portfolio: [holdings]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

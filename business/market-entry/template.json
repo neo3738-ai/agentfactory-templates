@@ -1,0 +1,59 @@
+{
+  "id": "market-entry",
+  "name": "Market Entry Strategy",
+  "category": "business",
+  "description": "Plan market entry strategies for new products or geographies",
+  "keywords": [
+    "market entry",
+    "launch",
+    "go-to-market",
+    "expansion",
+    "strategy",
+    "GTM"
+  ],
+  "agents": [
+    {
+      "name": "Market Researcher",
+      "role": "researcher",
+      "purpose": "Research the target market for entry planning",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the target market: size, growth, customer needs, competitive landscape, regulatory requirements, distribution channels, cultural considerations, and barriers to entry. Identify early adopter segments."
+    },
+    {
+      "name": "Strategy Writer",
+      "role": "strategist",
+      "purpose": "Write a market entry strategy",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a market entry strategy with: market assessment, entry mode recommendation (direct, partnership, acquisition), target segment prioritization, value proposition for the market, go-to-market playbook (channels, messaging, timeline), resource requirements, risk mitigation, and success metrics with 90-day, 6-month, and 1-year milestones."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Market",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Strategy",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "product",
+    "target_market"
+  ],
+  "suggestion_card": {
+    "title": "Market Entry",
+    "subtitle": "Plan market entry strategies",
+    "prompt_template": "Plan entry into [market] with [product]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

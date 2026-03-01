@@ -1,0 +1,45 @@
+{
+  "id": "home-maintenance",
+  "name": "Home Maintenance Scheduler",
+  "category": "personal",
+  "description": "Create a seasonal home maintenance schedule",
+  "keywords": [
+    "home",
+    "maintenance",
+    "house",
+    "repair",
+    "seasonal",
+    "schedule"
+  ],
+  "agents": [
+    {
+      "name": "Maintenance Planner",
+      "role": "planner",
+      "purpose": "Create a comprehensive maintenance schedule",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a seasonal home maintenance schedule based on the home type and climate. Include: spring, summer, fall, and winter tasks. Cover HVAC, plumbing, electrical, exterior, interior, and appliances. Add estimated time and cost for each task. Flag critical vs nice-to-have tasks."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Plan Maintenance",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "home_type",
+    "climate"
+  ],
+  "suggestion_card": {
+    "title": "Home Maintenance",
+    "subtitle": "Schedule home maintenance",
+    "prompt_template": "Create a maintenance schedule for my [home type]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

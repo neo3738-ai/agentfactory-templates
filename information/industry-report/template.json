@@ -1,0 +1,58 @@
+{
+  "id": "industry-report",
+  "name": "Industry Report Generator",
+  "category": "information",
+  "description": "Generate a comprehensive report on any industry or market",
+  "keywords": [
+    "industry",
+    "market",
+    "report",
+    "analysis",
+    "sector",
+    "trends"
+  ],
+  "agents": [
+    {
+      "name": "Industry Researcher",
+      "role": "researcher",
+      "purpose": "Research industry data, trends, and key players",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the industry thoroughly. Find market size, growth rate, key players, recent trends, regulatory landscape, and technology disruptions. Use industry reports and news sources."
+    },
+    {
+      "name": "Report Writer",
+      "role": "writer",
+      "purpose": "Write a structured industry report",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a professional industry report with: executive summary, market overview, competitive landscape, trends and drivers, challenges, and outlook. Include data points and sources."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Industry",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Report",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "industry"
+  ],
+  "suggestion_card": {
+    "title": "Industry Report",
+    "subtitle": "Comprehensive industry analysis",
+    "prompt_template": "Generate a report on the [industry] industry"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

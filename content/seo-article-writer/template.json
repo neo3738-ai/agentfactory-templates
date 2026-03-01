@@ -1,0 +1,59 @@
+{
+  "id": "seo-article-writer",
+  "name": "SEO Article Writer",
+  "category": "content",
+  "description": "Write SEO-optimized articles that rank on search engines",
+  "keywords": [
+    "seo",
+    "article",
+    "rank",
+    "search",
+    "optimize",
+    "keyword"
+  ],
+  "agents": [
+    {
+      "name": "Keyword Researcher",
+      "role": "researcher",
+      "purpose": "Research keywords and search intent",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the target keyword. Find search volume estimates, related keywords, LSI terms, and questions people ask. Analyze top-ranking content to understand what Google wants."
+    },
+    {
+      "name": "SEO Writer",
+      "role": "writer",
+      "purpose": "Write an SEO-optimized article",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write an SEO-optimized article. Include the target keyword in title, H2s, intro, and naturally throughout. Use related keywords. Write compelling meta description. Add FAQ section from People Also Ask. Aim for comprehensive coverage."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Keyword Research",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Article",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "keyword",
+    "word_count"
+  ],
+  "suggestion_card": {
+    "title": "SEO Article",
+    "subtitle": "Write articles that rank",
+    "prompt_template": "Write an SEO article about [keyword]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

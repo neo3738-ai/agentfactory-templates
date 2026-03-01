@@ -1,0 +1,56 @@
+{
+  "id": "data-dictionary",
+  "name": "Data Dictionary Generator",
+  "category": "data",
+  "description": "Generate comprehensive data dictionaries from datasets",
+  "keywords": [
+    "dictionary",
+    "metadata",
+    "catalog",
+    "documentation",
+    "dataset",
+    "column"
+  ],
+  "agents": [
+    {
+      "name": "Data Profiler",
+      "role": "analyst",
+      "purpose": "Profile the dataset and extract metadata",
+      "tools": [],
+      "system_prompt_hint": "Profile the dataset: for each column identify name, data type, description, sample values, null percentage, unique count, min/max values, distribution pattern, and potential PII flags."
+    },
+    {
+      "name": "Dictionary Writer",
+      "role": "writer",
+      "purpose": "Write a formatted data dictionary",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a data dictionary with: table/file overview, column-by-column documentation in a table format, data quality summary, relationships to other tables (if known), business rules and constraints, common queries, and data lineage notes."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Profile Data",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Dictionary",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "dataset"
+  ],
+  "suggestion_card": {
+    "title": "Data Dictionary",
+    "subtitle": "Generate data dictionaries",
+    "prompt_template": "Create a data dictionary for: [dataset description]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

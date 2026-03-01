@@ -1,0 +1,59 @@
+{
+  "id": "video-script",
+  "name": "Video Script Writer",
+  "category": "content",
+  "description": "Write scripts for YouTube videos and video content",
+  "keywords": [
+    "video",
+    "script",
+    "youtube",
+    "tutorial",
+    "vlog",
+    "content"
+  ],
+  "agents": [
+    {
+      "name": "Script Researcher",
+      "role": "researcher",
+      "purpose": "Research the video topic and trending formats",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the video topic. Find what performs well on YouTube for this topic. Identify key points, hooks, and common viewer questions. Note trending formats and video lengths."
+    },
+    {
+      "name": "Script Writer",
+      "role": "writer",
+      "purpose": "Write an engaging video script",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a video script with: attention-grabbing hook (first 10 seconds), intro with value proposition, main content sections with visual cues, B-roll suggestions, call-to-action, and end screen script. Include timestamps and estimated duration."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Script",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "topic",
+    "platform"
+  ],
+  "suggestion_card": {
+    "title": "Video Script",
+    "subtitle": "Write YouTube and video scripts",
+    "prompt_template": "Write a video script about [topic]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

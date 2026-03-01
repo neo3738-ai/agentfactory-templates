@@ -1,0 +1,58 @@
+{
+  "id": "security-scanner",
+  "name": "Security Review Scanner",
+  "category": "development",
+  "description": "Scan code for common security vulnerabilities",
+  "keywords": [
+    "security",
+    "vulnerability",
+    "scan",
+    "OWASP",
+    "injection",
+    "XSS"
+  ],
+  "agents": [
+    {
+      "name": "Security Scanner",
+      "role": "analyst",
+      "purpose": "Scan code for security vulnerabilities",
+      "tools": [
+        "file_read"
+      ],
+      "system_prompt_hint": "Scan the code for OWASP Top 10 vulnerabilities: injection, broken auth, sensitive data exposure, XXE, broken access control, misconfig, XSS, insecure deserialization, known vulnerabilities, and insufficient logging."
+    },
+    {
+      "name": "Security Reporter",
+      "role": "writer",
+      "purpose": "Write a security scan report",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a security report with: findings ranked by CVSS-style severity (Critical/High/Medium/Low), affected code locations, exploit scenarios, specific remediation steps with code examples, and a summary security score."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Scan Code",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Report",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "code_or_path"
+  ],
+  "suggestion_card": {
+    "title": "Security Scanner",
+    "subtitle": "Scan code for vulnerabilities",
+    "prompt_template": "Scan this code for security issues: [code]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

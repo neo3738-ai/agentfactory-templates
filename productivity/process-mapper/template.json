@@ -1,0 +1,56 @@
+{
+  "id": "process-mapper",
+  "name": "Process Mapper",
+  "category": "productivity",
+  "description": "Map and optimize business processes visually",
+  "keywords": [
+    "process",
+    "map",
+    "workflow",
+    "flowchart",
+    "optimize",
+    "BPMN"
+  ],
+  "agents": [
+    {
+      "name": "Process Analyst",
+      "role": "analyst",
+      "purpose": "Analyze and map the current process",
+      "tools": [],
+      "system_prompt_hint": "Analyze the described process. Identify all steps, actors, decisions, parallel paths, and handoffs. Detect bottlenecks, redundancies, and waste."
+    },
+    {
+      "name": "Process Optimizer",
+      "role": "planner",
+      "purpose": "Optimize the process and create documentation",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a process map in text format (using ASCII flowchart). Document current state and proposed optimized state. Identify: eliminated steps, automated steps, parallelized steps. Calculate estimated time savings."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Process",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Optimize",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "process_description"
+  ],
+  "suggestion_card": {
+    "title": "Process Mapper",
+    "subtitle": "Map and optimize processes",
+    "prompt_template": "Map this process: [description]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

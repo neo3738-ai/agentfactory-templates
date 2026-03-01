@@ -1,0 +1,57 @@
+{
+  "id": "api-data-mapper",
+  "name": "API Response Mapper",
+  "category": "data",
+  "description": "Map API responses to your internal data models",
+  "keywords": [
+    "api",
+    "mapping",
+    "response",
+    "model",
+    "integration",
+    "adapter"
+  ],
+  "agents": [
+    {
+      "name": "Mapping Analyst",
+      "role": "analyst",
+      "purpose": "Analyze API response and target model",
+      "tools": [],
+      "system_prompt_hint": "Analyze the API response structure and the target internal model. Identify field mappings, type conversions, nested object flattening, array handling, and fields that need transformation or enrichment."
+    },
+    {
+      "name": "Mapper Writer",
+      "role": "developer",
+      "purpose": "Write mapping code and documentation",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write mapping code/configuration that transforms the API response to the target model. Include: field mapping table, transformation functions, null/default handling, validation rules, error cases, and unit tests for the mapping. Support the specified language/framework."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Mapping",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Mapper",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "api_response",
+    "target_model"
+  ],
+  "suggestion_card": {
+    "title": "API Mapper",
+    "subtitle": "Map API responses to models",
+    "prompt_template": "Map this API response to my model: [response structure]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

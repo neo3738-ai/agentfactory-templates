@@ -1,0 +1,56 @@
+{
+  "id": "email-auto-responder",
+  "name": "Email Auto-Responder Designer",
+  "category": "automation",
+  "description": "Design automated email response rules and templates",
+  "keywords": [
+    "email",
+    "auto-reply",
+    "filter",
+    "rules",
+    "respond",
+    "automate"
+  ],
+  "agents": [
+    {
+      "name": "Email Analyst",
+      "role": "analyst",
+      "purpose": "Analyze email patterns and design response rules",
+      "tools": [],
+      "system_prompt_hint": "Analyze the described email patterns. Design classification rules for incoming emails by: sender type, subject keywords, urgency level, and content category. Define which emails need auto-responses vs forwarding vs flagging."
+    },
+    {
+      "name": "Template Writer",
+      "role": "writer",
+      "purpose": "Write response templates and automation rules",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create an email automation system with: classification rules, response templates for each category, escalation criteria, out-of-office variations, follow-up sequences, and filter configuration (compatible with Gmail/Outlook rules). Include merge fields for personalization."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Patterns",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Templates",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "email_types"
+  ],
+  "suggestion_card": {
+    "title": "Email Auto-Responder",
+    "subtitle": "Design email automation",
+    "prompt_template": "Design auto-responses for [email types]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

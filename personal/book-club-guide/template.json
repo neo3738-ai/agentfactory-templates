@@ -1,0 +1,58 @@
+{
+  "id": "book-club-guide",
+  "name": "Book Club Discussion Guide",
+  "category": "personal",
+  "description": "Generate book club discussion guides with questions and themes",
+  "keywords": [
+    "book club",
+    "discussion",
+    "reading",
+    "questions",
+    "literary",
+    "group"
+  ],
+  "agents": [
+    {
+      "name": "Book Researcher",
+      "role": "researcher",
+      "purpose": "Research the book for discussion material",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the book thoroughly. Find: plot summary, major themes, author's intent, literary devices, historical context, and critical reception. Identify controversial or thought-provoking elements."
+    },
+    {
+      "name": "Guide Writer",
+      "role": "writer",
+      "purpose": "Write a book club discussion guide",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a discussion guide with: book overview (spoiler-free intro and full summary), 15-20 discussion questions organized by theme, character analysis prompts, thematic explorations, author background, similar book recommendations, and activity suggestions for the meeting."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Book",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Guide",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "book_title"
+  ],
+  "suggestion_card": {
+    "title": "Book Club Guide",
+    "subtitle": "Create discussion guides",
+    "prompt_template": "Create a book club guide for [book title]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

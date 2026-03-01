@@ -1,0 +1,45 @@
+{
+  "id": "moving-checklist",
+  "name": "Moving Checklist Generator",
+  "category": "personal",
+  "description": "Generate comprehensive moving checklists and timelines",
+  "keywords": [
+    "moving",
+    "checklist",
+    "relocate",
+    "pack",
+    "house",
+    "apartment"
+  ],
+  "agents": [
+    {
+      "name": "Moving Planner",
+      "role": "planner",
+      "purpose": "Create a detailed moving plan and checklist",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a comprehensive moving checklist organized by timeline: 8 weeks before, 6 weeks, 4 weeks, 2 weeks, 1 week, moving day, and after move. Include: admin tasks, packing strategy by room, utilities to transfer, address changes, cleaning tasks, and budget tracker."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Plan Move",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "move_date",
+    "distance"
+  ],
+  "suggestion_card": {
+    "title": "Moving Checklist",
+    "subtitle": "Plan your move step by step",
+    "prompt_template": "Create a moving checklist for [move date]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

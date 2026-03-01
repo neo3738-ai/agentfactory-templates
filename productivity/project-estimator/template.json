@@ -1,0 +1,56 @@
+{
+  "id": "project-estimator",
+  "name": "Project Estimator",
+  "category": "productivity",
+  "description": "Estimate project timelines, effort, and costs",
+  "keywords": [
+    "estimate",
+    "project",
+    "timeline",
+    "cost",
+    "effort",
+    "planning"
+  ],
+  "agents": [
+    {
+      "name": "Scope Analyzer",
+      "role": "analyst",
+      "purpose": "Analyze project scope and identify work items",
+      "tools": [],
+      "system_prompt_hint": "Break down the project into work items. Identify technical complexity, dependencies, and unknowns. Consider similar past projects and industry benchmarks."
+    },
+    {
+      "name": "Estimator",
+      "role": "planner",
+      "purpose": "Create detailed estimates with ranges",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create project estimates with: optimistic, likely, and pessimistic timelines (three-point estimation). Include effort hours by role, cost ranges, key assumptions, and risk factors that could affect estimates. Add a confidence level for each estimate."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Scope",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Estimate",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "project_description"
+  ],
+  "suggestion_card": {
+    "title": "Project Estimator",
+    "subtitle": "Estimate timelines and costs",
+    "prompt_template": "Estimate this project: [description]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

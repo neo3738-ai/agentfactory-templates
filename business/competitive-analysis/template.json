@@ -1,0 +1,59 @@
+{
+  "id": "competitive-analysis",
+  "name": "Competitive Analysis Framework",
+  "category": "business",
+  "description": "Build detailed competitive analysis frameworks",
+  "keywords": [
+    "competitive",
+    "analysis",
+    "benchmark",
+    "comparison",
+    "market",
+    "positioning"
+  ],
+  "agents": [
+    {
+      "name": "Competitor Researcher",
+      "role": "researcher",
+      "purpose": "Research competitors in depth",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research each competitor: products, pricing, positioning, market share, strengths, weaknesses, recent moves, customer reviews, and technology stack. Find company size, funding, and key personnel."
+    },
+    {
+      "name": "Analysis Writer",
+      "role": "analyst",
+      "purpose": "Create a competitive analysis framework",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a competitive analysis with: competitor profiles, feature comparison matrix, pricing comparison, positioning map (text-based), competitive advantages/disadvantages, market share estimates, threat assessment, and strategic recommendations. Include a battle card for sales team use."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Competitors",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Analyze",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "company",
+    "competitors"
+  ],
+  "suggestion_card": {
+    "title": "Competitive Analysis",
+    "subtitle": "Analyze your competition",
+    "prompt_template": "Analyze competitors for [company]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

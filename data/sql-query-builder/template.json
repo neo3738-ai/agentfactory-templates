@@ -1,0 +1,45 @@
+{
+  "id": "sql-query-builder",
+  "name": "SQL Query Builder",
+  "category": "data",
+  "description": "Build complex SQL queries from natural language descriptions",
+  "keywords": [
+    "sql",
+    "query",
+    "database",
+    "select",
+    "join",
+    "aggregate"
+  ],
+  "agents": [
+    {
+      "name": "Query Builder",
+      "role": "developer",
+      "purpose": "Build SQL queries from natural language",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Translate the natural language request into SQL. Write: the query with proper formatting and comments, explanation of each clause, sample output table, performance considerations (index usage, execution plan hints), and alternative approaches. Support multiple SQL dialects (PostgreSQL, MySQL, SQLite) if requested."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Build Query",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "description",
+    "dialect"
+  ],
+  "suggestion_card": {
+    "title": "SQL Query Builder",
+    "subtitle": "Build SQL from descriptions",
+    "prompt_template": "Write a SQL query to [description]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

@@ -1,0 +1,56 @@
+{
+  "id": "error-decoder",
+  "name": "Error Message Decoder",
+  "category": "development",
+  "description": "Decode cryptic error messages and stack traces into fixes",
+  "keywords": [
+    "error",
+    "decode",
+    "stack trace",
+    "exception",
+    "crash",
+    "debug"
+  ],
+  "agents": [
+    {
+      "name": "Error Researcher",
+      "role": "researcher",
+      "purpose": "Research the error message and find solutions",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the error message or stack trace. Search Stack Overflow, GitHub issues, and documentation for this exact error. Find the most common causes and verified solutions."
+    },
+    {
+      "name": "Solution Writer",
+      "role": "writer",
+      "purpose": "Write a clear explanation and fix",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a clear explanation of: what the error means in plain English, the most likely cause, step-by-step fix instructions, alternative solutions if the first doesn't work, and how to prevent it in the future. Include code snippets where applicable."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Error",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Solution",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Error Decoder",
+    "subtitle": "Decode error messages into fixes",
+    "prompt_template": "Fix this error: [paste error message]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

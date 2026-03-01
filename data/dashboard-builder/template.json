@@ -1,0 +1,56 @@
+{
+  "id": "dashboard-builder",
+  "name": "Dashboard Spec Builder",
+  "category": "data",
+  "description": "Design data dashboard layouts with KPIs and visualizations",
+  "keywords": [
+    "dashboard",
+    "KPI",
+    "visualization",
+    "metrics",
+    "chart",
+    "report"
+  ],
+  "agents": [
+    {
+      "name": "Metrics Analyst",
+      "role": "analyst",
+      "purpose": "Identify key metrics and KPIs for the dashboard",
+      "tools": [],
+      "system_prompt_hint": "Analyze the business context and identify: primary KPIs, secondary metrics, diagnostic metrics, and leading indicators. Define calculation formulas, data sources, and update frequency for each metric."
+    },
+    {
+      "name": "Dashboard Designer",
+      "role": "architect",
+      "purpose": "Design the dashboard layout and visualizations",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Design a dashboard specification with: KPI cards with targets, chart types for each metric (with justification), layout wireframe (text-based), filter/drill-down capabilities, data refresh strategy, alert thresholds, and color coding rules. Include a data requirements document for engineering."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Identify Metrics",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Design Dashboard",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "business_context"
+  ],
+  "suggestion_card": {
+    "title": "Dashboard Builder",
+    "subtitle": "Design data dashboards",
+    "prompt_template": "Design a dashboard for [business area]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

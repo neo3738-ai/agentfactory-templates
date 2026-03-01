@@ -1,0 +1,58 @@
+{
+  "id": "academic-paper-finder",
+  "name": "Academic Paper Finder",
+  "category": "information",
+  "description": "Find and summarize academic papers on any research topic",
+  "keywords": [
+    "academic",
+    "paper",
+    "research",
+    "scholar",
+    "citation",
+    "journal"
+  ],
+  "agents": [
+    {
+      "name": "Paper Searcher",
+      "role": "researcher",
+      "purpose": "Search academic databases for relevant papers",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Search Google Scholar, Semantic Scholar, and PubMed for papers on the given topic. Find highly cited papers, recent publications, and survey papers. Extract titles, authors, abstracts, and citation counts."
+    },
+    {
+      "name": "Paper Summarizer",
+      "role": "writer",
+      "purpose": "Summarize found papers with key findings",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a literature review summary. Group papers by theme. For each paper provide a 2-3 sentence summary of key findings. Note methodology and limitations. Highlight the most impactful papers."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Search Papers",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Summarize",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "research_topic"
+  ],
+  "suggestion_card": {
+    "title": "Paper Finder",
+    "subtitle": "Find academic papers on any topic",
+    "prompt_template": "Find papers about [research topic]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

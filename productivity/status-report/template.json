@@ -1,0 +1,44 @@
+{
+  "id": "status-report",
+  "name": "Status Report Generator",
+  "category": "productivity",
+  "description": "Generate professional project status reports",
+  "keywords": [
+    "status",
+    "report",
+    "update",
+    "progress",
+    "stakeholder",
+    "project"
+  ],
+  "agents": [
+    {
+      "name": "Report Generator",
+      "role": "writer",
+      "purpose": "Generate a structured status report",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Generate a project status report with: RAG status (Red/Amber/Green), executive summary, accomplishments this period, planned next period, risks and issues with mitigation plans, budget status, milestone tracker, and blockers needing escalation. Keep it concise and action-oriented."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Generate Report",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "project_status"
+  ],
+  "suggestion_card": {
+    "title": "Status Report",
+    "subtitle": "Generate project status reports",
+    "prompt_template": "Create a status report: [project updates]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

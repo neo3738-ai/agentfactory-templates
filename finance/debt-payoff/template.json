@@ -1,0 +1,57 @@
+{
+  "id": "debt-payoff",
+  "name": "Debt Payoff Strategizer",
+  "category": "finance",
+  "description": "Create optimal debt payoff strategies",
+  "keywords": [
+    "debt",
+    "payoff",
+    "loan",
+    "credit card",
+    "interest",
+    "snowball",
+    "avalanche"
+  ],
+  "agents": [
+    {
+      "name": "Debt Analyst",
+      "role": "analyst",
+      "purpose": "Analyze debt portfolio and calculate payoff strategies",
+      "tools": [],
+      "system_prompt_hint": "Analyze all debts: balances, interest rates, minimum payments, and terms. Calculate both avalanche (highest interest first) and snowball (smallest balance first) strategies. Compare total interest paid and payoff timelines."
+    },
+    {
+      "name": "Payoff Planner",
+      "role": "planner",
+      "purpose": "Create a detailed debt payoff plan",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a debt payoff plan with: debt inventory table, avalanche vs snowball comparison, recommended strategy with reasoning, month-by-month payment schedule, total interest saved, debt-free date, and motivational milestones. Include extra payment impact calculator."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Debts",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Plan Payoff",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "debts"
+  ],
+  "suggestion_card": {
+    "title": "Debt Payoff",
+    "subtitle": "Create debt payoff strategies",
+    "prompt_template": "Plan to pay off: [list debts with balances and rates]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

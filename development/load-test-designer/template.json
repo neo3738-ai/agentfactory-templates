@@ -1,0 +1,57 @@
+{
+  "id": "load-test-designer",
+  "name": "Load Test Designer",
+  "category": "development",
+  "description": "Design load testing scenarios and scripts",
+  "keywords": [
+    "load test",
+    "stress test",
+    "performance",
+    "benchmark",
+    "k6",
+    "jmeter"
+  ],
+  "agents": [
+    {
+      "name": "Test Designer",
+      "role": "architect",
+      "purpose": "Design load testing scenarios",
+      "tools": [],
+      "system_prompt_hint": "Design load test scenarios covering: baseline performance, stress testing, spike testing, and soak testing. Define virtual user profiles, think times, ramp-up patterns, and success criteria (response time, error rate, throughput)."
+    },
+    {
+      "name": "Script Writer",
+      "role": "developer",
+      "purpose": "Write load test scripts",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write load test scripts (k6 or similar). Include: scenario configuration, realistic user flows, dynamic data generation, assertions/checks, and result analysis thresholds. Add setup/teardown and custom metrics. Include a runner script with environment configs."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Design Scenarios",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Scripts",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "system_description",
+    "target_load"
+  ],
+  "suggestion_card": {
+    "title": "Load Test Designer",
+    "subtitle": "Design load test scenarios",
+    "prompt_template": "Design load tests for [system]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

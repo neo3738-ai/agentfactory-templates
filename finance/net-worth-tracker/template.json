@@ -1,0 +1,57 @@
+{
+  "id": "net-worth-tracker",
+  "name": "Net Worth Tracker",
+  "category": "finance",
+  "description": "Calculate and track net worth with growth projections",
+  "keywords": [
+    "net worth",
+    "assets",
+    "liabilities",
+    "wealth",
+    "track",
+    "financial"
+  ],
+  "agents": [
+    {
+      "name": "Net Worth Analyst",
+      "role": "analyst",
+      "purpose": "Calculate net worth and analyze trends",
+      "tools": [],
+      "system_prompt_hint": "Calculate net worth from provided assets and liabilities. Categorize assets (liquid, invested, property, other) and liabilities (mortgage, loans, credit). Calculate key ratios: debt-to-asset, liquid net worth, and savings rate."
+    },
+    {
+      "name": "Wealth Advisor",
+      "role": "advisor",
+      "purpose": "Provide net worth growth strategies",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a net worth report with: asset and liability breakdown, net worth calculation, key financial ratios, comparison to age-based benchmarks, growth projections, and specific recommendations to grow net worth. Include strategies for each category: increase assets, reduce liabilities, optimize allocation."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Calculate",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Advise",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "assets",
+    "liabilities"
+  ],
+  "suggestion_card": {
+    "title": "Net Worth Tracker",
+    "subtitle": "Track and grow net worth",
+    "prompt_template": "Calculate my net worth: [assets] and [liabilities]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

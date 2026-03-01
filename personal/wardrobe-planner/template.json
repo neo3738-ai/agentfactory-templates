@@ -1,0 +1,46 @@
+{
+  "id": "wardrobe-planner",
+  "name": "Wardrobe Capsule Planner",
+  "category": "personal",
+  "description": "Plan a capsule wardrobe with versatile outfit combinations",
+  "keywords": [
+    "wardrobe",
+    "fashion",
+    "capsule",
+    "outfit",
+    "style",
+    "clothing"
+  ],
+  "agents": [
+    {
+      "name": "Style Advisor",
+      "role": "advisor",
+      "purpose": "Plan a capsule wardrobe",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a capsule wardrobe plan based on the user's style preferences, climate, and lifestyle. Include: essential pieces list (30-40 items), color palette, outfit combinations (aim for 50+ outfits from the capsule), shopping list for missing pieces with budget estimates, and seasonal swap suggestions."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Plan Wardrobe",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "style",
+    "climate",
+    "lifestyle"
+  ],
+  "suggestion_card": {
+    "title": "Wardrobe Planner",
+    "subtitle": "Build a capsule wardrobe",
+    "prompt_template": "Plan a capsule wardrobe for [style] in [climate]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

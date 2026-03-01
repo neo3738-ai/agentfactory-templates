@@ -1,0 +1,59 @@
+{
+  "id": "interview-prep",
+  "name": "Interview Prep Coach",
+  "category": "learning",
+  "description": "Prepare for job interviews with practice questions and tips",
+  "keywords": [
+    "interview",
+    "job",
+    "prepare",
+    "question",
+    "behavioral",
+    "technical"
+  ],
+  "agents": [
+    {
+      "name": "Interview Researcher",
+      "role": "researcher",
+      "purpose": "Research the company and role for interview prep",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the company: culture, values, recent news, products, and team. Research common interview questions for the specified role. Find Glassdoor-style interview experiences if available."
+    },
+    {
+      "name": "Interview Coach",
+      "role": "coach",
+      "purpose": "Create a comprehensive interview prep package",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create an interview prep package with: company research summary, 15 likely questions (behavioral + technical + role-specific), STAR-format answer frameworks for behavioral questions, questions to ask the interviewer, common pitfalls to avoid, salary negotiation tips, and a pre-interview checklist."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Prep Package",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "company",
+    "role"
+  ],
+  "suggestion_card": {
+    "title": "Interview Prep",
+    "subtitle": "Prepare for job interviews",
+    "prompt_template": "Prepare me for an interview at [company] for [role]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

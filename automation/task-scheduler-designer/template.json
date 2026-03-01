@@ -1,0 +1,57 @@
+{
+  "id": "task-scheduler-designer",
+  "name": "Task Scheduler Designer",
+  "category": "automation",
+  "description": "Design task scheduling systems with dependencies and priorities",
+  "keywords": [
+    "scheduler",
+    "task",
+    "queue",
+    "priority",
+    "dependency",
+    "job"
+  ],
+  "agents": [
+    {
+      "name": "Scheduler Analyst",
+      "role": "analyst",
+      "purpose": "Analyze tasks and design scheduling logic",
+      "tools": [],
+      "system_prompt_hint": "Analyze the tasks to be scheduled: dependencies between tasks, priority levels, resource constraints, SLA requirements, and failure recovery needs. Design an optimal execution order and parallelization strategy."
+    },
+    {
+      "name": "Scheduler Designer",
+      "role": "architect",
+      "purpose": "Design the task scheduling system",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Design a task scheduling system with: task definitions, dependency graph (text DAG), priority rules, resource allocation, concurrency limits, retry policies, dead letter handling, and monitoring dashboard specs. Include a task manifest format and example configurations."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Tasks",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Design Scheduler",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "tasks",
+    "constraints"
+  ],
+  "suggestion_card": {
+    "title": "Task Scheduler",
+    "subtitle": "Design task scheduling",
+    "prompt_template": "Design a scheduler for: [task descriptions]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

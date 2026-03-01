@@ -1,0 +1,58 @@
+{
+  "id": "data-pipeline-designer",
+  "name": "Data Pipeline Designer",
+  "category": "data",
+  "description": "Design ETL/ELT data pipelines with error handling",
+  "keywords": [
+    "pipeline",
+    "ETL",
+    "ELT",
+    "ingestion",
+    "transform",
+    "data engineering"
+  ],
+  "agents": [
+    {
+      "name": "Pipeline Architect",
+      "role": "architect",
+      "purpose": "Design the data pipeline architecture",
+      "tools": [],
+      "system_prompt_hint": "Design a data pipeline considering: source systems, ingestion method (batch/streaming), transformation steps, data quality checks, error handling, retry logic, monitoring, and destination. Choose appropriate tools/frameworks."
+    },
+    {
+      "name": "Pipeline Documenter",
+      "role": "writer",
+      "purpose": "Document the pipeline design and implementation guide",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Document the pipeline with: architecture diagram (text), source-to-target mapping, transformation rules, data quality checks, error handling strategy, scheduling/orchestration, monitoring and alerting, and implementation steps. Include code snippets for key components."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Design Pipeline",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Document",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "source",
+    "destination",
+    "requirements"
+  ],
+  "suggestion_card": {
+    "title": "Pipeline Designer",
+    "subtitle": "Design data pipelines",
+    "prompt_template": "Design a pipeline from [source] to [destination]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

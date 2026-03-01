@@ -1,0 +1,59 @@
+{
+  "id": "grant-proposal",
+  "name": "Grant Proposal Writer",
+  "category": "content",
+  "description": "Write compelling grant proposals for funding applications",
+  "keywords": [
+    "grant",
+    "proposal",
+    "funding",
+    "nonprofit",
+    "research",
+    "application"
+  ],
+  "agents": [
+    {
+      "name": "Proposal Researcher",
+      "role": "researcher",
+      "purpose": "Research the grant requirements and funder priorities",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the grant program requirements, funder priorities, past awarded projects, and evaluation criteria. Identify what makes a winning proposal for this funder."
+    },
+    {
+      "name": "Proposal Writer",
+      "role": "writer",
+      "purpose": "Write a compelling grant proposal",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a grant proposal with: executive summary, statement of need with data, project description, goals and objectives (SMART), methodology, timeline, budget justification, evaluation plan, and organizational capacity. Align language with funder priorities."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Grant",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Proposal",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "project",
+    "funder"
+  ],
+  "suggestion_card": {
+    "title": "Grant Proposal",
+    "subtitle": "Write funding proposals",
+    "prompt_template": "Write a grant proposal for [project]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

@@ -1,0 +1,56 @@
+{
+  "id": "product-hunt-digest",
+  "name": "Product Hunt Digest",
+  "category": "information",
+  "description": "Get a daily digest of top Product Hunt launches",
+  "keywords": [
+    "product hunt",
+    "launch",
+    "startup",
+    "app",
+    "tool",
+    "new"
+  ],
+  "agents": [
+    {
+      "name": "PH Fetcher",
+      "role": "researcher",
+      "purpose": "Fetch top Product Hunt launches",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Fetch today's top Product Hunt launches. Get product names, descriptions, upvote counts, maker info, and links. Focus on the top 10-15 products."
+    },
+    {
+      "name": "PH Summarizer",
+      "role": "writer",
+      "purpose": "Create a readable Product Hunt digest",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a digest of today's best launches. Group by category (developer tools, AI, design, etc). Include brief descriptions and why each product is interesting."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Fetch Launches",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Summarize",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 18 * * *",
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Product Hunt Digest",
+    "subtitle": "Daily top launches",
+    "prompt_template": "Get today's top Product Hunt launches"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

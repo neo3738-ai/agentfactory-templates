@@ -1,0 +1,44 @@
+{
+  "id": "cron-job-builder",
+  "name": "Cron Job Builder",
+  "category": "automation",
+  "description": "Build and explain cron job schedules for task automation",
+  "keywords": [
+    "cron",
+    "schedule",
+    "automate",
+    "recurring",
+    "timer",
+    "task"
+  ],
+  "agents": [
+    {
+      "name": "Cron Builder",
+      "role": "developer",
+      "purpose": "Build cron expressions and automation scripts",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Build cron expressions for the requested schedules. For each: provide the cron expression, plain-English explanation, next 5 execution times, timezone considerations, and a wrapper script with logging, error handling, and notification on failure. Include common cron gotchas and testing tips."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Build Cron Jobs",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "tasks_and_schedules"
+  ],
+  "suggestion_card": {
+    "title": "Cron Job Builder",
+    "subtitle": "Build scheduled tasks",
+    "prompt_template": "Create cron jobs for: [task descriptions and schedules]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

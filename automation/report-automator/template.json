@@ -1,0 +1,57 @@
+{
+  "id": "report-automator",
+  "name": "Report Automation Designer",
+  "category": "automation",
+  "description": "Design automated report generation and distribution systems",
+  "keywords": [
+    "report",
+    "automate",
+    "schedule",
+    "distribute",
+    "generate",
+    "recurring"
+  ],
+  "agents": [
+    {
+      "name": "Report Analyst",
+      "role": "analyst",
+      "purpose": "Analyze reporting requirements and data sources",
+      "tools": [],
+      "system_prompt_hint": "Analyze the reporting needs: what metrics to include, data sources, calculation logic, formatting requirements, distribution list, and delivery schedule. Identify which parts can be fully automated vs need manual input."
+    },
+    {
+      "name": "Automation Designer",
+      "role": "architect",
+      "purpose": "Design the report automation system",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Design a report automation system with: data collection queries, calculation and transformation logic, report template with sections, chart/visualization specifications, generation schedule, distribution rules (email, Slack, dashboard), and exception handling. Include sample report output."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Requirements",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Design Automation",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "report_type",
+    "frequency"
+  ],
+  "suggestion_card": {
+    "title": "Report Automator",
+    "subtitle": "Automate report generation",
+    "prompt_template": "Automate this report: [report description]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

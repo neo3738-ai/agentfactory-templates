@@ -1,0 +1,57 @@
+{
+  "id": "regex-data-extractor",
+  "name": "Data Extraction Builder",
+  "category": "data",
+  "description": "Build data extraction rules for unstructured text",
+  "keywords": [
+    "extract",
+    "parse",
+    "unstructured",
+    "text",
+    "pattern",
+    "scrape"
+  ],
+  "agents": [
+    {
+      "name": "Pattern Analyst",
+      "role": "analyst",
+      "purpose": "Analyze text patterns and design extraction rules",
+      "tools": [],
+      "system_prompt_hint": "Analyze the unstructured text samples. Identify repeating patterns for the desired data points. Design extraction rules using regex, delimiter-based parsing, or structural patterns. Handle edge cases and variations."
+    },
+    {
+      "name": "Extractor Builder",
+      "role": "developer",
+      "purpose": "Build extraction code and validate results",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Build extraction rules/code that: captures all target data points, handles format variations, provides confidence scores, falls back gracefully on unrecognized patterns, and outputs structured data (JSON/CSV). Include test cases with expected outputs."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Patterns",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Build Extractor",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "sample_text",
+    "target_fields"
+  ],
+  "suggestion_card": {
+    "title": "Data Extractor",
+    "subtitle": "Extract data from text",
+    "prompt_template": "Extract [fields] from this text: [sample]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

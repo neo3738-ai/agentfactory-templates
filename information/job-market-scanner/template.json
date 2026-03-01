@@ -1,0 +1,59 @@
+{
+  "id": "job-market-scanner",
+  "name": "Job Market Scanner",
+  "category": "information",
+  "description": "Scan job postings to understand market demand for specific roles",
+  "keywords": [
+    "job",
+    "hiring",
+    "market",
+    "salary",
+    "demand",
+    "career"
+  ],
+  "agents": [
+    {
+      "name": "Job Scanner",
+      "role": "researcher",
+      "purpose": "Scan job boards for market intelligence",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Search major job boards for the specified role. Analyze job titles, required skills, salary ranges, company types, and location trends. Note common requirements and nice-to-haves."
+    },
+    {
+      "name": "Market Reporter",
+      "role": "writer",
+      "purpose": "Write a job market analysis report",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a job market report with: demand level, salary ranges, most-requested skills, top hiring companies, remote vs on-site trends, and career advice based on findings."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Scan Jobs",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Report",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "role",
+    "location"
+  ],
+  "suggestion_card": {
+    "title": "Job Market Scanner",
+    "subtitle": "Understand demand for any role",
+    "prompt_template": "Scan the job market for [role] positions"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

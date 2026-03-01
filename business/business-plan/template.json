@@ -1,0 +1,58 @@
+{
+  "id": "business-plan",
+  "name": "Business Plan Writer",
+  "category": "business",
+  "description": "Write comprehensive business plans for startups or new ventures",
+  "keywords": [
+    "business plan",
+    "startup",
+    "venture",
+    "strategy",
+    "executive summary",
+    "market"
+  ],
+  "agents": [
+    {
+      "name": "Business Researcher",
+      "role": "researcher",
+      "purpose": "Research the market and industry for the business plan",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the industry, target market, competitors, regulatory environment, and market trends. Find market size data, growth projections, and comparable business models."
+    },
+    {
+      "name": "Plan Writer",
+      "role": "writer",
+      "purpose": "Write a comprehensive business plan",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a business plan with: executive summary, company description, market analysis, organization structure, product/service line, marketing and sales strategy, financial projections (3-year P&L, cash flow), funding requirements, and appendices. Follow SBA-recommended format. Include realistic assumptions."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Plan",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "business_idea"
+  ],
+  "suggestion_card": {
+    "title": "Business Plan",
+    "subtitle": "Write business plans",
+    "prompt_template": "Write a business plan for [business idea]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

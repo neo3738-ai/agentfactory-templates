@@ -1,0 +1,45 @@
+{
+  "id": "freelance-rate",
+  "name": "Freelance Rate Calculator",
+  "category": "finance",
+  "description": "Calculate optimal freelance rates based on expenses and goals",
+  "keywords": [
+    "freelance",
+    "rate",
+    "hourly",
+    "pricing",
+    "contractor",
+    "billing"
+  ],
+  "agents": [
+    {
+      "name": "Rate Calculator",
+      "role": "analyst",
+      "purpose": "Calculate optimal freelance rates",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Calculate the optimal freelance rate considering: desired annual income, business expenses, taxes (self-employment + income), benefits costs (health insurance, retirement), non-billable hours (admin, marketing, learning), vacation days, and utilization rate. Provide hourly, daily, and project-based rate recommendations. Compare with market rates."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Calculate Rate",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "desired_income",
+    "expenses"
+  ],
+  "suggestion_card": {
+    "title": "Rate Calculator",
+    "subtitle": "Calculate freelance rates",
+    "prompt_template": "Calculate my freelance rate: [income goal] and [expenses]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

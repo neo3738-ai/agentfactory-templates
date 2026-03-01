@@ -1,0 +1,58 @@
+{
+  "id": "regulation-monitor",
+  "name": "Regulation Monitor",
+  "category": "information",
+  "description": "Track regulatory changes and compliance updates in your industry",
+  "keywords": [
+    "regulation",
+    "compliance",
+    "legal",
+    "law",
+    "policy",
+    "government"
+  ],
+  "agents": [
+    {
+      "name": "Regulation Scanner",
+      "role": "researcher",
+      "purpose": "Scan for regulatory changes and updates",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Monitor government websites, regulatory bodies, and legal news for changes affecting the specified industry. Track proposed rules, final rules, and enforcement actions."
+    },
+    {
+      "name": "Compliance Analyst",
+      "role": "analyst",
+      "purpose": "Analyze regulatory impact and required actions",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Analyze each regulatory change for business impact. Identify compliance deadlines, required actions, and potential penalties. Prioritize by urgency and impact."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Scan Regulations",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Analyze Impact",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 8 * * 1",
+  "user_fields": [
+    "industry"
+  ],
+  "suggestion_card": {
+    "title": "Regulation Monitor",
+    "subtitle": "Track regulatory changes",
+    "prompt_template": "Monitor regulations affecting [industry]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

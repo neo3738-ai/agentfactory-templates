@@ -1,0 +1,59 @@
+{
+  "id": "technical-blog",
+  "name": "Technical Blog Writer",
+  "category": "content",
+  "description": "Write in-depth technical blog posts with code examples",
+  "keywords": [
+    "technical",
+    "blog",
+    "tutorial",
+    "code",
+    "programming",
+    "howto"
+  ],
+  "agents": [
+    {
+      "name": "Tech Researcher",
+      "role": "researcher",
+      "purpose": "Research the technical topic and best practices",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the technical topic. Find official documentation, best practices, common pitfalls, and real-world examples. Identify the latest version and any recent changes."
+    },
+    {
+      "name": "Tech Writer",
+      "role": "writer",
+      "purpose": "Write a detailed technical blog post",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a technical blog post with: clear title, TL;DR section, prerequisites, step-by-step explanation with code snippets, diagrams (described in text), common errors and solutions, conclusion with next steps. Use proper code formatting and syntax highlighting hints."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Post",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "topic",
+    "language"
+  ],
+  "suggestion_card": {
+    "title": "Technical Blog",
+    "subtitle": "Write technical tutorials",
+    "prompt_template": "Write a technical post about [topic]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

@@ -1,0 +1,56 @@
+{
+  "id": "schema-designer",
+  "name": "Data Schema Designer",
+  "category": "data",
+  "description": "Design optimal data schemas for any use case",
+  "keywords": [
+    "schema",
+    "model",
+    "design",
+    "normalize",
+    "entity",
+    "relationship"
+  ],
+  "agents": [
+    {
+      "name": "Schema Analyst",
+      "role": "analyst",
+      "purpose": "Analyze requirements and identify entities",
+      "tools": [],
+      "system_prompt_hint": "Analyze the data requirements. Identify all entities, their attributes, data types, constraints, and relationships (one-to-one, one-to-many, many-to-many). Consider query patterns and access patterns."
+    },
+    {
+      "name": "Schema Writer",
+      "role": "architect",
+      "purpose": "Design and document the data schema",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Design a normalized data schema with: entity definitions, attribute specifications (name, type, constraints), relationship diagrams (text-based ERD), indexes for common queries, sample data, and migration considerations. Provide both SQL DDL and NoSQL document structure if applicable."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Requirements",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Design Schema",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "requirements"
+  ],
+  "suggestion_card": {
+    "title": "Schema Designer",
+    "subtitle": "Design data schemas",
+    "prompt_template": "Design a schema for [use case]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

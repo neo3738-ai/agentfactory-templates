@@ -1,0 +1,59 @@
+{
+  "id": "cicd-helper",
+  "name": "CI/CD Pipeline Helper",
+  "category": "development",
+  "description": "Design and troubleshoot CI/CD pipelines",
+  "keywords": [
+    "cicd",
+    "pipeline",
+    "deploy",
+    "github actions",
+    "jenkins",
+    "automation"
+  ],
+  "agents": [
+    {
+      "name": "Pipeline Designer",
+      "role": "architect",
+      "purpose": "Design or troubleshoot CI/CD pipeline configurations",
+      "tools": [
+        "file_read"
+      ],
+      "system_prompt_hint": "Analyze the project structure and requirements. Design a CI/CD pipeline with: build, test, lint, security scan, and deploy stages. Handle environment-specific configs and secrets management."
+    },
+    {
+      "name": "Config Writer",
+      "role": "developer",
+      "purpose": "Write pipeline configuration files",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write the CI/CD configuration (GitHub Actions, GitLab CI, or Jenkins). Include: trigger conditions, caching, parallel jobs, environment variables, artifact management, deployment steps, and rollback mechanism. Add comments explaining each section."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Design Pipeline",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Config",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "project_type",
+    "platform"
+  ],
+  "suggestion_card": {
+    "title": "CI/CD Helper",
+    "subtitle": "Design CI/CD pipelines",
+    "prompt_template": "Create a CI/CD pipeline for [project type]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

@@ -1,0 +1,59 @@
+{
+  "id": "podcast-script",
+  "name": "Podcast Script Writer",
+  "category": "content",
+  "description": "Write engaging podcast scripts with intro, segments, and outro",
+  "keywords": [
+    "podcast",
+    "script",
+    "show",
+    "episode",
+    "audio",
+    "host"
+  ],
+  "agents": [
+    {
+      "name": "Script Researcher",
+      "role": "researcher",
+      "purpose": "Research the podcast topic for talking points",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the podcast topic. Find interesting facts, statistics, quotes, and discussion angles. Identify potential questions and counterarguments."
+    },
+    {
+      "name": "Script Writer",
+      "role": "writer",
+      "purpose": "Write a structured podcast script",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a podcast script with: hook intro, topic introduction, 3-4 discussion segments with transitions, key talking points per segment, listener questions section, and outro with call-to-action. Include time estimates per segment."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Topic",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Script",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "topic",
+    "duration"
+  ],
+  "suggestion_card": {
+    "title": "Podcast Script",
+    "subtitle": "Write podcast episode scripts",
+    "prompt_template": "Write a podcast script about [topic]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

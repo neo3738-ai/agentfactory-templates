@@ -1,0 +1,60 @@
+{
+  "id": "hobby-finder",
+  "name": "Hobby Finder",
+  "category": "personal",
+  "description": "Discover new hobbies based on your interests and lifestyle",
+  "keywords": [
+    "hobby",
+    "interest",
+    "activity",
+    "leisure",
+    "creative",
+    "sport"
+  ],
+  "agents": [
+    {
+      "name": "Hobby Researcher",
+      "role": "researcher",
+      "purpose": "Research hobbies matching the user's profile",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research hobbies matching the user's interests, available time, budget, and physical ability. Find beginner-friendly options, local resources, online communities, and equipment costs."
+    },
+    {
+      "name": "Hobby Advisor",
+      "role": "advisor",
+      "purpose": "Recommend hobbies with getting-started guides",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Recommend 10 hobbies with: description, why it fits the user, difficulty level, startup cost, time commitment, how to start (first 3 steps), local/online resources, and community links. Group by category: creative, physical, intellectual, social."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Hobbies",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Recommend",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "interests",
+    "time_available",
+    "budget"
+  ],
+  "suggestion_card": {
+    "title": "Hobby Finder",
+    "subtitle": "Discover new hobbies",
+    "prompt_template": "Find hobbies for someone who likes [interests]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

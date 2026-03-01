@@ -1,0 +1,58 @@
+{
+  "id": "history-explorer",
+  "name": "History Explorer",
+  "category": "learning",
+  "description": "Explore historical events with context and analysis",
+  "keywords": [
+    "history",
+    "historical",
+    "event",
+    "era",
+    "civilization",
+    "timeline"
+  ],
+  "agents": [
+    {
+      "name": "History Researcher",
+      "role": "researcher",
+      "purpose": "Research historical events and context",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the historical topic. Find: key events, dates, people involved, causes, consequences, different perspectives, primary source excerpts, and connections to other events. Include lesser-known but important details."
+    },
+    {
+      "name": "History Writer",
+      "role": "writer",
+      "purpose": "Write an engaging historical narrative",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write an engaging historical exploration with: timeline of events, key figures and their motivations, cause and effect analysis, multiple perspectives, primary source quotes, lasting impact and legacy, and connections to present day. Make history come alive with narrative techniques."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research History",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Narrative",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "topic_or_era"
+  ],
+  "suggestion_card": {
+    "title": "History Explorer",
+    "subtitle": "Explore historical events",
+    "prompt_template": "Explore the history of [topic or era]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

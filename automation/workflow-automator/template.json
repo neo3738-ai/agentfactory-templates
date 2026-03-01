@@ -1,0 +1,57 @@
+{
+  "id": "workflow-automator",
+  "name": "Workflow Automation Designer",
+  "category": "automation",
+  "description": "Design multi-step automated workflows with triggers and actions",
+  "keywords": [
+    "workflow",
+    "automation",
+    "trigger",
+    "action",
+    "zapier",
+    "n8n"
+  ],
+  "agents": [
+    {
+      "name": "Workflow Analyst",
+      "role": "analyst",
+      "purpose": "Analyze the process and identify automation opportunities",
+      "tools": [],
+      "system_prompt_hint": "Analyze the described workflow. Identify: manual steps that can be automated, trigger events, required integrations, data flow between steps, conditional logic, and error handling needs. Calculate time savings."
+    },
+    {
+      "name": "Workflow Designer",
+      "role": "architect",
+      "purpose": "Design the automated workflow",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Design the automated workflow with: trigger definition, step-by-step actions, conditional branches, data transformations, error handling, retry logic, and notification points. Provide implementation instructions for the specified platform (Zapier, n8n, Make, or custom). Include a workflow diagram in text format."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Process",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Design Workflow",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "process_description",
+    "platform"
+  ],
+  "suggestion_card": {
+    "title": "Workflow Automator",
+    "subtitle": "Design automated workflows",
+    "prompt_template": "Automate this workflow: [process description]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

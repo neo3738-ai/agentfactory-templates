@@ -1,0 +1,56 @@
+{
+  "id": "product-description",
+  "name": "Product Description Writer",
+  "category": "content",
+  "description": "Write compelling product descriptions for e-commerce",
+  "keywords": [
+    "product",
+    "description",
+    "ecommerce",
+    "listing",
+    "sell",
+    "features"
+  ],
+  "agents": [
+    {
+      "name": "Product Analyst",
+      "role": "analyst",
+      "purpose": "Analyze product features and benefits",
+      "tools": [],
+      "system_prompt_hint": "Analyze the product details provided. Identify key features, unique selling points, target audience, and emotional benefits. Compare with typical competitor descriptions."
+    },
+    {
+      "name": "Description Writer",
+      "role": "writer",
+      "purpose": "Write persuasive product descriptions",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write product descriptions in multiple formats: short (50 words), medium (150 words), and detailed (300+ words). Include bullet points for features, benefit-focused copy, and SEO-friendly language. Write for the target audience's pain points."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Product",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Description",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "product_details"
+  ],
+  "suggestion_card": {
+    "title": "Product Description",
+    "subtitle": "Write e-commerce descriptions",
+    "prompt_template": "Write a product description for [product]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

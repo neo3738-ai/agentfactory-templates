@@ -1,0 +1,57 @@
+{
+  "id": "email-sequence",
+  "name": "Email Sequence Planner",
+  "category": "productivity",
+  "description": "Plan multi-email sequences for onboarding, sales, or nurture campaigns",
+  "keywords": [
+    "email",
+    "sequence",
+    "campaign",
+    "drip",
+    "onboarding",
+    "nurture"
+  ],
+  "agents": [
+    {
+      "name": "Sequence Strategist",
+      "role": "strategist",
+      "purpose": "Plan the email sequence strategy",
+      "tools": [],
+      "system_prompt_hint": "Design the email sequence flow. Determine: number of emails, timing between sends, goal of each email, and progression logic. Consider the audience journey and conversion goals."
+    },
+    {
+      "name": "Sequence Writer",
+      "role": "writer",
+      "purpose": "Write all emails in the sequence",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write each email in the sequence with: subject line (with A/B variant), preview text, body copy, CTA, and send timing. Ensure narrative progression across emails. Include merge field placeholders."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Plan Strategy",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Emails",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "goal",
+    "audience"
+  ],
+  "suggestion_card": {
+    "title": "Email Sequence",
+    "subtitle": "Plan multi-email campaigns",
+    "prompt_template": "Plan an email sequence for [goal]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

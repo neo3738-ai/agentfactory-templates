@@ -1,0 +1,58 @@
+{
+  "id": "vocabulary-builder",
+  "name": "Vocabulary Builder",
+  "category": "learning",
+  "description": "Build vocabulary with contextual usage and memory techniques",
+  "keywords": [
+    "vocabulary",
+    "words",
+    "GRE",
+    "SAT",
+    "English",
+    "verbal"
+  ],
+  "agents": [
+    {
+      "name": "Vocab Researcher",
+      "role": "researcher",
+      "purpose": "Research words and create learning materials",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "For each word or word list: find definitions, etymology, pronunciation guide, example sentences from real usage, synonyms, antonyms, and common collocations. Group words by theme or root."
+    },
+    {
+      "name": "Vocab Builder",
+      "role": "teacher",
+      "purpose": "Create vocabulary learning cards with memory aids",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create vocabulary study materials with: word, definition, part of speech, pronunciation, 3 example sentences, mnemonic device or memory trick, word family, common mistakes, and a mini-quiz. Group by difficulty or theme for structured learning."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Words",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Build Cards",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "words_or_level"
+  ],
+  "suggestion_card": {
+    "title": "Vocabulary Builder",
+    "subtitle": "Build your vocabulary",
+    "prompt_template": "Help me learn these words: [word list or level]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

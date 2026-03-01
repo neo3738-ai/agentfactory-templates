@@ -1,0 +1,45 @@
+{
+  "id": "file-organizer",
+  "name": "File Organization System Designer",
+  "category": "automation",
+  "description": "Design file organization systems with naming conventions and folder structures",
+  "keywords": [
+    "file",
+    "organize",
+    "folder",
+    "naming",
+    "structure",
+    "convention"
+  ],
+  "agents": [
+    {
+      "name": "Organization Designer",
+      "role": "architect",
+      "purpose": "Design a file organization system",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Design a comprehensive file organization system with: folder hierarchy (max 3-4 levels deep), naming conventions with examples, tagging/metadata strategy, archive rules, version control approach, and cleanup automation scripts. Tailor to the specific use case (personal, team, project). Include migration plan from current messy state."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Design System",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "use_case",
+    "current_state"
+  ],
+  "suggestion_card": {
+    "title": "File Organizer",
+    "subtitle": "Design file organization systems",
+    "prompt_template": "Organize my files for [use case]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

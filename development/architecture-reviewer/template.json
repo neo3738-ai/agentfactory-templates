@@ -1,0 +1,58 @@
+{
+  "id": "architecture-reviewer",
+  "name": "Architecture Reviewer",
+  "category": "development",
+  "description": "Review system architecture designs and suggest improvements",
+  "keywords": [
+    "architecture",
+    "design",
+    "review",
+    "system",
+    "scalability",
+    "patterns"
+  ],
+  "agents": [
+    {
+      "name": "Architecture Reviewer",
+      "role": "architect",
+      "purpose": "Review architecture for issues and improvements",
+      "tools": [
+        "file_read"
+      ],
+      "system_prompt_hint": "Review the system architecture. Evaluate: scalability, fault tolerance, security, maintainability, and cost efficiency. Identify single points of failure, tight coupling, and missing components. Compare against best practices and known patterns."
+    },
+    {
+      "name": "Recommendation Writer",
+      "role": "writer",
+      "purpose": "Write architecture review findings",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write an architecture review document with: summary assessment, strengths, concerns ranked by severity, specific recommendations with rationale, suggested architecture diagram changes, and migration path for improvements."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Review Architecture",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Findings",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "architecture_description"
+  ],
+  "suggestion_card": {
+    "title": "Architecture Review",
+    "subtitle": "Review system architecture",
+    "prompt_template": "Review this architecture: [description]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

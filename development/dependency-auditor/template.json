@@ -1,0 +1,59 @@
+{
+  "id": "dependency-auditor",
+  "name": "Dependency Auditor",
+  "category": "development",
+  "description": "Audit project dependencies for vulnerabilities and updates",
+  "keywords": [
+    "dependency",
+    "audit",
+    "vulnerability",
+    "security",
+    "outdated",
+    "package"
+  ],
+  "agents": [
+    {
+      "name": "Dependency Scanner",
+      "role": "analyst",
+      "purpose": "Scan and catalog all project dependencies",
+      "tools": [
+        "file_read",
+        "shell"
+      ],
+      "system_prompt_hint": "Read the project's dependency files (package.json, Cargo.toml, requirements.txt, etc). List all direct and transitive dependencies with versions. Check for known vulnerabilities using public databases."
+    },
+    {
+      "name": "Audit Reporter",
+      "role": "writer",
+      "purpose": "Write a dependency audit report",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write an audit report with: dependency inventory, vulnerable packages with severity ratings, outdated packages with latest versions, unused dependencies, license compatibility issues, and prioritized update recommendations."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Scan Dependencies",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Report",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "project_path"
+  ],
+  "suggestion_card": {
+    "title": "Dependency Auditor",
+    "subtitle": "Audit project dependencies",
+    "prompt_template": "Audit dependencies in [project path]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

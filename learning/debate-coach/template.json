@@ -1,0 +1,59 @@
+{
+  "id": "debate-coach",
+  "name": "Debate Coach",
+  "category": "learning",
+  "description": "Prepare arguments for debates with pros, cons, and rebuttals",
+  "keywords": [
+    "debate",
+    "argument",
+    "persuade",
+    "rhetoric",
+    "position",
+    "critical thinking"
+  ],
+  "agents": [
+    {
+      "name": "Research Assistant",
+      "role": "researcher",
+      "purpose": "Research both sides of the debate topic",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research both sides of the debate topic thoroughly. Find strong arguments, evidence, statistics, expert opinions, and real-world examples for both positions. Identify the strongest and weakest points on each side."
+    },
+    {
+      "name": "Debate Coach",
+      "role": "coach",
+      "purpose": "Prepare debate arguments and rebuttals",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Prepare a debate brief with: opening statement, 3-5 main arguments with supporting evidence, anticipated opposing arguments with prepared rebuttals, key statistics and quotes, closing statement, and debate tips. Include both sides for balanced preparation."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Topic",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Prepare Arguments",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "topic",
+    "position"
+  ],
+  "suggestion_card": {
+    "title": "Debate Coach",
+    "subtitle": "Prepare for debates",
+    "prompt_template": "Prepare arguments for [position] on [topic]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

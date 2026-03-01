@@ -1,0 +1,56 @@
+{
+  "id": "tax-prep-helper",
+  "name": "Tax Preparation Helper",
+  "category": "finance",
+  "description": "Organize tax documents and identify deductions",
+  "keywords": [
+    "tax",
+    "deduction",
+    "IRS",
+    "filing",
+    "return",
+    "preparation"
+  ],
+  "agents": [
+    {
+      "name": "Tax Organizer",
+      "role": "analyst",
+      "purpose": "Organize tax documents and identify deductions",
+      "tools": [],
+      "system_prompt_hint": "Analyze the provided financial information. Organize into income sources, deductible expenses, credits, and required forms. Identify commonly missed deductions for the user's situation. Flag items needing documentation."
+    },
+    {
+      "name": "Tax Advisor",
+      "role": "advisor",
+      "purpose": "Provide tax preparation guidance",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a tax preparation guide with: document checklist organized by form, identified deductions with estimated value, tax credit eligibility, deadline reminders, estimated tax liability, and suggestions for reducing next year's taxes. Include standard disclaimer about seeking professional advice."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Organize Documents",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Advise",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "financial_info"
+  ],
+  "suggestion_card": {
+    "title": "Tax Prep",
+    "subtitle": "Organize taxes and find deductions",
+    "prompt_template": "Help me prepare taxes: [income and expenses]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

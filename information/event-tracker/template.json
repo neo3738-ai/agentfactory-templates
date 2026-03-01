@@ -1,0 +1,58 @@
+{
+  "id": "event-tracker",
+  "name": "Event & Conference Tracker",
+  "category": "information",
+  "description": "Track upcoming events, conferences, and meetups in your field",
+  "keywords": [
+    "event",
+    "conference",
+    "meetup",
+    "summit",
+    "webinar",
+    "track"
+  ],
+  "agents": [
+    {
+      "name": "Event Scanner",
+      "role": "researcher",
+      "purpose": "Scan for upcoming events and conferences",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Search for upcoming conferences, meetups, and events in the specified field. Find dates, locations, speakers, ticket prices, and registration deadlines. Check Eventbrite, Meetup, and industry sites."
+    },
+    {
+      "name": "Event Curator",
+      "role": "writer",
+      "purpose": "Curate and organize event listings",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a curated list of upcoming events organized by date. Include: event name, date, location, cost, key speakers, and relevance score. Highlight early-bird deadlines and free events."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Scan Events",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Curate",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 9 * * 1",
+  "user_fields": [
+    "field"
+  ],
+  "suggestion_card": {
+    "title": "Event Tracker",
+    "subtitle": "Find conferences and meetups",
+    "prompt_template": "Find upcoming events in [field]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

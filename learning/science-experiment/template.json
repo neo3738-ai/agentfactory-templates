@@ -1,0 +1,45 @@
+{
+  "id": "science-experiment",
+  "name": "Science Experiment Designer",
+  "category": "learning",
+  "description": "Design science experiments with hypothesis, method, and analysis",
+  "keywords": [
+    "science",
+    "experiment",
+    "hypothesis",
+    "method",
+    "lab",
+    "research"
+  ],
+  "agents": [
+    {
+      "name": "Experiment Designer",
+      "role": "teacher",
+      "purpose": "Design a rigorous science experiment",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Design a science experiment with: research question, background context, hypothesis (null and alternative), variables (independent, dependent, controlled), materials list, step-by-step procedure, safety precautions, data collection plan, expected results, and statistical analysis approach. Appropriate for the specified level (K-12 or university)."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Design Experiment",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "topic",
+    "level"
+  ],
+  "suggestion_card": {
+    "title": "Experiment Designer",
+    "subtitle": "Design science experiments",
+    "prompt_template": "Design an experiment about [topic]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

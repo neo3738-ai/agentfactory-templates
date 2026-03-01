@@ -1,0 +1,54 @@
+{
+  "id": "commit-message-writer",
+  "name": "Commit Message Writer",
+  "category": "development",
+  "description": "Write clear, conventional commit messages from code diffs",
+  "keywords": [
+    "commit",
+    "message",
+    "git",
+    "conventional",
+    "changelog",
+    "diff"
+  ],
+  "agents": [
+    {
+      "name": "Diff Analyzer",
+      "role": "analyst",
+      "purpose": "Analyze the code diff and understand changes",
+      "tools": [],
+      "system_prompt_hint": "Analyze the provided code diff. Identify: what changed, why it likely changed (bug fix, feature, refactor, etc), affected components, and breaking changes."
+    },
+    {
+      "name": "Message Writer",
+      "role": "writer",
+      "purpose": "Write a well-formatted commit message",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a commit message following Conventional Commits format. Include: type (feat/fix/refactor/docs/test/chore), optional scope, concise subject line (<50 chars), detailed body explaining what and why, and footer with breaking changes or issue references."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Diff",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Message",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Commit Message",
+    "subtitle": "Write commit messages from diffs",
+    "prompt_template": "Write a commit message for this diff: [diff]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

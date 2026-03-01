@@ -1,0 +1,57 @@
+{
+  "id": "coding-kata",
+  "name": "Coding Kata Generator",
+  "category": "learning",
+  "description": "Generate coding exercises and challenges with solutions",
+  "keywords": [
+    "coding",
+    "kata",
+    "exercise",
+    "practice",
+    "challenge",
+    "algorithm"
+  ],
+  "agents": [
+    {
+      "name": "Kata Designer",
+      "role": "teacher",
+      "purpose": "Design coding challenges appropriate to skill level",
+      "tools": [],
+      "system_prompt_hint": "Design a coding challenge appropriate to the skill level and language. Include: problem statement, input/output examples, constraints, hints (progressive), and bonus challenges. Cover various CS concepts: algorithms, data structures, string manipulation, etc."
+    },
+    {
+      "name": "Solution Writer",
+      "role": "developer",
+      "purpose": "Write detailed solutions with explanations",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a solution with: step-by-step approach explanation, code solution in the specified language, time and space complexity analysis, alternative approaches, and test cases. Explain the thought process a developer should follow."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Design Kata",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Solution",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "language",
+    "difficulty"
+  ],
+  "suggestion_card": {
+    "title": "Coding Kata",
+    "subtitle": "Practice coding challenges",
+    "prompt_template": "Give me a [difficulty] [language] coding challenge"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

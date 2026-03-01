@@ -1,0 +1,45 @@
+{
+  "id": "meditation-guide",
+  "name": "Meditation & Mindfulness Guide",
+  "category": "personal",
+  "description": "Get guided meditation scripts and mindfulness exercises",
+  "keywords": [
+    "meditation",
+    "mindfulness",
+    "calm",
+    "stress",
+    "breathe",
+    "relax"
+  ],
+  "agents": [
+    {
+      "name": "Meditation Guide",
+      "role": "coach",
+      "purpose": "Create guided meditation and mindfulness exercises",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a guided meditation script tailored to the user's needs. Include: preparation instructions, breathing exercise, body scan or visualization, main meditation practice, and gentle closing. Time each section. Offer modifications for beginners and experienced practitioners."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Guide Meditation",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "focus",
+    "duration"
+  ],
+  "suggestion_card": {
+    "title": "Meditation Guide",
+    "subtitle": "Guided meditation scripts",
+    "prompt_template": "Guide me through a [duration] minute meditation for [focus]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

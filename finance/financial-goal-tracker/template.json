@@ -1,0 +1,56 @@
+{
+  "id": "financial-goal-tracker",
+  "name": "Financial Goal Tracker",
+  "category": "finance",
+  "description": "Set and track progress toward financial goals",
+  "keywords": [
+    "goal",
+    "savings",
+    "target",
+    "progress",
+    "financial",
+    "milestone"
+  ],
+  "agents": [
+    {
+      "name": "Goal Analyst",
+      "role": "analyst",
+      "purpose": "Analyze progress toward financial goals",
+      "tools": [],
+      "system_prompt_hint": "Analyze each financial goal: target amount, current progress, timeline, and monthly contribution needed. Calculate if the user is on track, ahead, or behind for each goal. Factor in returns for investment goals."
+    },
+    {
+      "name": "Goal Coach",
+      "role": "coach",
+      "purpose": "Provide guidance to stay on track",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a financial goals dashboard with: goal summary table, progress bars (text), on-track status for each goal, required adjustments if behind, celebration notes if ahead, recommended priority order, and specific monthly action items. Provide motivational context."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Goals",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Coach",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "goals"
+  ],
+  "suggestion_card": {
+    "title": "Goal Tracker",
+    "subtitle": "Track financial goals",
+    "prompt_template": "Track my financial goals: [goals with targets]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

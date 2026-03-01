@@ -1,0 +1,45 @@
+{
+  "id": "recipe-converter",
+  "name": "Recipe Converter & Scaler",
+  "category": "personal",
+  "description": "Convert recipes between measurement systems and scale servings",
+  "keywords": [
+    "recipe",
+    "convert",
+    "scale",
+    "metric",
+    "imperial",
+    "servings"
+  ],
+  "agents": [
+    {
+      "name": "Recipe Converter",
+      "role": "writer",
+      "purpose": "Convert and scale recipes accurately",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Convert the recipe between measurement systems (metric/imperial). Scale all ingredients proportionally to the desired serving size. Adjust cooking times and temperatures. Note ingredients that don't scale linearly (e.g., spices, leavening). Include both original and converted versions."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Convert Recipe",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "recipe",
+    "target_servings"
+  ],
+  "suggestion_card": {
+    "title": "Recipe Converter",
+    "subtitle": "Convert and scale recipes",
+    "prompt_template": "Convert this recipe to [servings] servings: [recipe]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

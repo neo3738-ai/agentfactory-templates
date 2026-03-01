@@ -1,0 +1,58 @@
+{
+  "id": "refactor-advisor",
+  "name": "Refactoring Advisor",
+  "category": "development",
+  "description": "Analyze code and suggest refactoring improvements",
+  "keywords": [
+    "refactor",
+    "clean code",
+    "code smell",
+    "improve",
+    "maintainability",
+    "SOLID"
+  ],
+  "agents": [
+    {
+      "name": "Code Smell Detector",
+      "role": "analyst",
+      "purpose": "Identify code smells and anti-patterns",
+      "tools": [
+        "file_read"
+      ],
+      "system_prompt_hint": "Analyze the code for: code smells (long methods, large classes, feature envy, etc), SOLID violations, DRY violations, complexity hotspots, and naming issues. Measure rough cyclomatic complexity."
+    },
+    {
+      "name": "Refactoring Advisor",
+      "role": "advisor",
+      "purpose": "Suggest specific refactoring strategies",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Suggest refactorings with: the code smell identified, the refactoring pattern to apply (Extract Method, Strategy Pattern, etc), before/after code examples, risk level of the change, and recommended order of refactoring. Prioritize by impact and safety."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Detect Smells",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Suggest Refactoring",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "code_or_path"
+  ],
+  "suggestion_card": {
+    "title": "Refactoring Advisor",
+    "subtitle": "Get refactoring suggestions",
+    "prompt_template": "Suggest refactorings for: [code]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

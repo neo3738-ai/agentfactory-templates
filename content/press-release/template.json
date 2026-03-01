@@ -1,0 +1,45 @@
+{
+  "id": "press-release",
+  "name": "Press Release Writer",
+  "category": "content",
+  "description": "Write professional press releases for announcements",
+  "keywords": [
+    "press",
+    "release",
+    "PR",
+    "announcement",
+    "media",
+    "news"
+  ],
+  "agents": [
+    {
+      "name": "PR Writer",
+      "role": "writer",
+      "purpose": "Write a professional press release",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a press release following AP style. Include: compelling headline, dateline, strong lead paragraph (who/what/when/where/why), supporting quotes, body paragraphs with details, boilerplate about the company, and media contact. Keep it to one page."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Write Release",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "announcement",
+    "company"
+  ],
+  "suggestion_card": {
+    "title": "Press Release",
+    "subtitle": "Write professional press releases",
+    "prompt_template": "Write a press release about [announcement]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

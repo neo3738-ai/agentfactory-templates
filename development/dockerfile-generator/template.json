@@ -1,0 +1,58 @@
+{
+  "id": "dockerfile-generator",
+  "name": "Dockerfile Generator",
+  "category": "development",
+  "description": "Generate optimized Dockerfiles and docker-compose configs",
+  "keywords": [
+    "docker",
+    "container",
+    "dockerfile",
+    "compose",
+    "deploy",
+    "image"
+  ],
+  "agents": [
+    {
+      "name": "Docker Architect",
+      "role": "architect",
+      "purpose": "Design the containerization strategy",
+      "tools": [
+        "file_read"
+      ],
+      "system_prompt_hint": "Analyze the project to determine: base image, build stages, runtime dependencies, ports, volumes, and environment variables. Design multi-stage builds for optimal image size."
+    },
+    {
+      "name": "Docker Writer",
+      "role": "developer",
+      "purpose": "Write Dockerfile and compose configuration",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write an optimized Dockerfile with: multi-stage build, minimal base image, proper layer caching, non-root user, health checks, and security best practices. Also write docker-compose.yml if multiple services are needed. Add comments explaining each directive."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Design",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Config",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "project_type"
+  ],
+  "suggestion_card": {
+    "title": "Dockerfile Generator",
+    "subtitle": "Generate Docker configurations",
+    "prompt_template": "Create a Dockerfile for [project type]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

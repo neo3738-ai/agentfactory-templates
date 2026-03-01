@@ -1,0 +1,59 @@
+{
+  "id": "pricing-strategy",
+  "name": "Pricing Strategy Advisor",
+  "category": "business",
+  "description": "Develop pricing strategies based on market and cost analysis",
+  "keywords": [
+    "pricing",
+    "strategy",
+    "revenue",
+    "margin",
+    "value",
+    "monetization"
+  ],
+  "agents": [
+    {
+      "name": "Pricing Researcher",
+      "role": "researcher",
+      "purpose": "Research market pricing and customer willingness to pay",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research: competitor pricing models, customer price sensitivity, value metrics, industry benchmarks, and pricing psychology. Find comparable products and their pricing tiers."
+    },
+    {
+      "name": "Pricing Advisor",
+      "role": "advisor",
+      "purpose": "Develop pricing strategy recommendations",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Develop a pricing strategy with: cost analysis, value-based pricing model, competitive pricing comparison, recommended price points, tiering structure, discount policies, pricing psychology tactics, projected revenue at different price points, and A/B testing plan. Include sensitivity analysis."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Pricing",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Develop Strategy",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "product",
+    "costs"
+  ],
+  "suggestion_card": {
+    "title": "Pricing Strategy",
+    "subtitle": "Develop pricing strategies",
+    "prompt_template": "Develop pricing for [product]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

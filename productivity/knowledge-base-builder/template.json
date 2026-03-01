@@ -1,0 +1,56 @@
+{
+  "id": "knowledge-base-builder",
+  "name": "Knowledge Base Builder",
+  "category": "productivity",
+  "description": "Build structured knowledge base articles from raw information",
+  "keywords": [
+    "knowledge base",
+    "wiki",
+    "documentation",
+    "FAQ",
+    "help center",
+    "article"
+  ],
+  "agents": [
+    {
+      "name": "Content Organizer",
+      "role": "analyst",
+      "purpose": "Organize raw information into knowledge base structure",
+      "tools": [],
+      "system_prompt_hint": "Analyze the raw information. Identify distinct topics, subtopics, and frequently asked questions. Create a logical category hierarchy and cross-references."
+    },
+    {
+      "name": "Article Writer",
+      "role": "writer",
+      "purpose": "Write polished knowledge base articles",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write knowledge base articles with: clear title, brief description, step-by-step instructions where applicable, screenshots placeholders, related articles links, and tags. Use consistent formatting. Include a search-friendly summary."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Organize Content",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Articles",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "raw_content"
+  ],
+  "suggestion_card": {
+    "title": "Knowledge Base",
+    "subtitle": "Build KB articles from notes",
+    "prompt_template": "Create knowledge base articles from: [raw info]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

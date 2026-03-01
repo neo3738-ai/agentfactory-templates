@@ -1,0 +1,58 @@
+{
+  "id": "certification-prep",
+  "name": "Certification Prep Coach",
+  "category": "learning",
+  "description": "Prepare for professional certifications with practice questions",
+  "keywords": [
+    "certification",
+    "exam",
+    "prep",
+    "practice",
+    "questions",
+    "study"
+  ],
+  "agents": [
+    {
+      "name": "Exam Researcher",
+      "role": "researcher",
+      "purpose": "Research the certification exam format and topics",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the certification exam: format, number of questions, passing score, topic weights, question types, and recommended preparation approach. Find official study resources."
+    },
+    {
+      "name": "Practice Builder",
+      "role": "teacher",
+      "purpose": "Create practice questions and study materials",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a study package with: 20 practice questions matching exam format and difficulty, detailed explanations for correct and incorrect answers, topic-by-topic study notes for weak areas, exam strategy tips, and a study schedule. Group questions by domain/topic."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Exam",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Build Practice",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "certification_name"
+  ],
+  "suggestion_card": {
+    "title": "Cert Prep",
+    "subtitle": "Prepare for certifications",
+    "prompt_template": "Help me prepare for [certification]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

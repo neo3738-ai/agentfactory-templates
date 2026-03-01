@@ -1,0 +1,45 @@
+{
+  "id": "json-transformer",
+  "name": "JSON Transformer",
+  "category": "data",
+  "description": "Transform JSON data between different structures and formats",
+  "keywords": [
+    "json",
+    "transform",
+    "convert",
+    "reshape",
+    "map",
+    "format"
+  ],
+  "agents": [
+    {
+      "name": "JSON Transformer",
+      "role": "developer",
+      "purpose": "Transform JSON between structures",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Analyze the source JSON structure and target format. Create a transformation that: maps fields correctly, handles nested objects and arrays, applies data type conversions, handles missing fields with defaults, and validates the output. Provide the transformation code/rules and sample output."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Transform",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "source_json",
+    "target_format"
+  ],
+  "suggestion_card": {
+    "title": "JSON Transformer",
+    "subtitle": "Transform JSON structures",
+    "prompt_template": "Transform this JSON to [target format]: [json]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

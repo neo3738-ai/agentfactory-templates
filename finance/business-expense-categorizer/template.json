@@ -1,0 +1,44 @@
+{
+  "id": "business-expense-categorizer",
+  "name": "Business Expense Categorizer",
+  "category": "finance",
+  "description": "Automatically categorize business expenses for accounting",
+  "keywords": [
+    "categorize",
+    "accounting",
+    "bookkeeping",
+    "expense",
+    "business",
+    "ledger"
+  ],
+  "agents": [
+    {
+      "name": "Expense Categorizer",
+      "role": "analyst",
+      "purpose": "Categorize expenses by accounting category",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Categorize each expense into standard accounting categories: COGS, operating expenses, office supplies, travel, marketing, utilities, insurance, professional services, software/subscriptions, meals/entertainment, etc. Apply IRS guidelines for deductibility. Flag items needing review or split between categories. Output in accounting-friendly format."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Categorize",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "expense_list"
+  ],
+  "suggestion_card": {
+    "title": "Expense Categorizer",
+    "subtitle": "Categorize business expenses",
+    "prompt_template": "Categorize these expenses: [expense list]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

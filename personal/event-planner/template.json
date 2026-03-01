@@ -1,0 +1,60 @@
+{
+  "id": "event-planner",
+  "name": "Event Planner",
+  "category": "personal",
+  "description": "Plan events with timelines, budgets, and vendor checklists",
+  "keywords": [
+    "event",
+    "party",
+    "plan",
+    "celebrate",
+    "venue",
+    "catering"
+  ],
+  "agents": [
+    {
+      "name": "Event Researcher",
+      "role": "researcher",
+      "purpose": "Research venues, vendors, and event ideas",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research event options. Find venue ideas, catering options, entertainment, decoration themes, and vendor pricing in the specified area and budget range."
+    },
+    {
+      "name": "Event Planner",
+      "role": "planner",
+      "purpose": "Create a detailed event plan",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a comprehensive event plan with: timeline (countdown from event date), budget breakdown, guest list management tips, venue checklist, vendor contact list template, day-of schedule (hour by hour), and contingency plans. Include decoration and theme ideas."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Options",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Plan Event",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "event_type",
+    "budget",
+    "guest_count"
+  ],
+  "suggestion_card": {
+    "title": "Event Planner",
+    "subtitle": "Plan any event",
+    "prompt_template": "Plan a [event type] for [guest count] people"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

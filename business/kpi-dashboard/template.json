@@ -1,0 +1,44 @@
+{
+  "id": "kpi-dashboard",
+  "name": "KPI Framework Designer",
+  "category": "business",
+  "description": "Design KPI frameworks aligned with business objectives",
+  "keywords": [
+    "KPI",
+    "metric",
+    "OKR",
+    "measurement",
+    "performance",
+    "indicator"
+  ],
+  "agents": [
+    {
+      "name": "KPI Designer",
+      "role": "analyst",
+      "purpose": "Design a KPI framework aligned with business goals",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Design a KPI framework with: strategic objectives mapped to KPIs, KPI definitions (name, formula, data source, frequency, owner), target setting methodology, leading vs lagging indicator balance, KPI hierarchy (company -> department -> team), dashboard mockup (text), review cadence, and action triggers for when KPIs miss targets. Limit to 5-7 KPIs per level to avoid metric overload."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Design Framework",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "business_objectives"
+  ],
+  "suggestion_card": {
+    "title": "KPI Framework",
+    "subtitle": "Design KPI frameworks",
+    "prompt_template": "Design KPIs for [business objectives]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

@@ -1,0 +1,56 @@
+{
+  "id": "concept-mapper",
+  "name": "Concept Map Builder",
+  "category": "learning",
+  "description": "Create visual concept maps showing relationships between ideas",
+  "keywords": [
+    "concept map",
+    "mind map",
+    "diagram",
+    "relationships",
+    "visual",
+    "organize"
+  ],
+  "agents": [
+    {
+      "name": "Concept Analyzer",
+      "role": "analyst",
+      "purpose": "Analyze the topic and identify key concepts and relationships",
+      "tools": [],
+      "system_prompt_hint": "Analyze the topic and break it into key concepts. Identify hierarchical relationships, cross-links, and examples for each concept. Determine the central concept and how all others connect."
+    },
+    {
+      "name": "Map Builder",
+      "role": "writer",
+      "purpose": "Build a structured concept map",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a concept map in text format with: central concept, main branches (5-7 major concepts), sub-branches, cross-links between concepts with labeled relationships, and examples for leaf nodes. Use indentation and arrows to show hierarchy and connections. Include a summary of key relationships."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Concepts",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Build Map",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "topic"
+  ],
+  "suggestion_card": {
+    "title": "Concept Mapper",
+    "subtitle": "Map relationships between ideas",
+    "prompt_template": "Create a concept map for [topic]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

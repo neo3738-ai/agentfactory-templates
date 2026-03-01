@@ -1,0 +1,57 @@
+{
+  "id": "data-sync-planner",
+  "name": "Data Sync Planner",
+  "category": "automation",
+  "description": "Plan data synchronization between systems with conflict resolution",
+  "keywords": [
+    "sync",
+    "synchronize",
+    "integration",
+    "bidirectional",
+    "conflict",
+    "data"
+  ],
+  "agents": [
+    {
+      "name": "Sync Analyst",
+      "role": "analyst",
+      "purpose": "Analyze sync requirements and identify challenges",
+      "tools": [],
+      "system_prompt_hint": "Analyze the systems to be synced. Identify: entities to sync, field mappings, sync direction (one-way/bidirectional), conflict scenarios, data volume estimates, and frequency requirements. Assess consistency requirements."
+    },
+    {
+      "name": "Sync Planner",
+      "role": "architect",
+      "purpose": "Design the synchronization strategy",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Design a sync strategy with: entity mapping table, sync frequency and method (push/pull/webhook), conflict resolution rules (last-write-wins, merge, manual), error handling and retry logic, data validation, audit logging, and monitoring. Include sequence diagrams for key flows."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Requirements",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Plan Sync",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "system_a",
+    "system_b"
+  ],
+  "suggestion_card": {
+    "title": "Data Sync Planner",
+    "subtitle": "Plan data synchronization",
+    "prompt_template": "Plan sync between [system A] and [system B]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

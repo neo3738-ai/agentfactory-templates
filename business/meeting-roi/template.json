@@ -1,0 +1,56 @@
+{
+  "id": "meeting-roi",
+  "name": "Meeting ROI Calculator",
+  "category": "business",
+  "description": "Calculate the cost and ROI of meetings to optimize meeting culture",
+  "keywords": [
+    "meeting",
+    "cost",
+    "ROI",
+    "productivity",
+    "time",
+    "culture"
+  ],
+  "agents": [
+    {
+      "name": "Meeting Analyst",
+      "role": "analyst",
+      "purpose": "Analyze meeting costs and effectiveness",
+      "tools": [],
+      "system_prompt_hint": "Calculate the cost of each meeting based on: attendee salaries (estimates by role), meeting duration, frequency, and preparation time. Assess each meeting's purpose, outcomes, and whether they could be replaced by async communication."
+    },
+    {
+      "name": "Meeting Optimizer",
+      "role": "advisor",
+      "purpose": "Recommend meeting optimizations",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a meeting audit report with: total meeting hours and costs per week, cost per meeting type, meetings ranked by ROI (outcomes vs cost), specific recommendations (cancel, shorten, reduce attendees, make async), estimated time and cost savings, and a meeting policy recommendation."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Meetings",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Optimize",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "meeting_list"
+  ],
+  "suggestion_card": {
+    "title": "Meeting ROI",
+    "subtitle": "Calculate meeting costs and ROI",
+    "prompt_template": "Audit these meetings: [meeting list with attendees and frequency]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

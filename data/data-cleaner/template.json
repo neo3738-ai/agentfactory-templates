@@ -1,0 +1,44 @@
+{
+  "id": "data-cleaner",
+  "name": "Data Cleaner",
+  "category": "data",
+  "description": "Clean and normalize messy data with consistent formatting",
+  "keywords": [
+    "clean",
+    "normalize",
+    "format",
+    "deduplicate",
+    "missing",
+    "data quality"
+  ],
+  "agents": [
+    {
+      "name": "Data Cleaner",
+      "role": "analyst",
+      "purpose": "Identify and fix data quality issues",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Analyze the data for quality issues: missing values, duplicates, inconsistent formats, outliers, invalid entries, and encoding problems. Apply cleaning rules: standardize formats, fill or flag missing values, remove duplicates, fix typos. Report all changes made with before/after examples."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Clean Data",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "data"
+  ],
+  "suggestion_card": {
+    "title": "Data Cleaner",
+    "subtitle": "Clean messy data",
+    "prompt_template": "Clean this data: [paste data]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

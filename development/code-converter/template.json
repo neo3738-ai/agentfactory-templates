@@ -1,0 +1,58 @@
+{
+  "id": "code-converter",
+  "name": "Code Converter",
+  "category": "development",
+  "description": "Convert code between programming languages",
+  "keywords": [
+    "convert",
+    "translate",
+    "port",
+    "language",
+    "transform",
+    "rewrite"
+  ],
+  "agents": [
+    {
+      "name": "Code Analyzer",
+      "role": "analyst",
+      "purpose": "Analyze the source code and identify conversion challenges",
+      "tools": [
+        "file_read"
+      ],
+      "system_prompt_hint": "Analyze the source code. Identify language-specific features that need special handling during conversion: idioms, standard library usage, error handling patterns, memory management, and concurrency models."
+    },
+    {
+      "name": "Code Converter",
+      "role": "developer",
+      "purpose": "Convert code to the target language",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Convert the code to the target language. Use idiomatic patterns of the target language (don't just transliterate). Handle: error patterns, null safety, type systems, and standard library equivalents. Add comments for non-obvious conversions. Include a conversion notes section."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Source",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Convert",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "target_language"
+  ],
+  "suggestion_card": {
+    "title": "Code Converter",
+    "subtitle": "Convert between languages",
+    "prompt_template": "Convert this code to [language]: [code]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

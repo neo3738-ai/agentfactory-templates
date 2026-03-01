@@ -1,0 +1,57 @@
+{
+  "id": "backup-scheduler",
+  "name": "Backup Strategy Planner",
+  "category": "automation",
+  "description": "Design comprehensive backup strategies with schedules and retention",
+  "keywords": [
+    "backup",
+    "recovery",
+    "disaster",
+    "schedule",
+    "retention",
+    "restore"
+  ],
+  "agents": [
+    {
+      "name": "Backup Architect",
+      "role": "architect",
+      "purpose": "Design a backup strategy",
+      "tools": [],
+      "system_prompt_hint": "Design a backup strategy considering: data types, RPO/RTO requirements, storage costs, and compliance needs. Plan full, incremental, and differential backups with appropriate schedules."
+    },
+    {
+      "name": "Strategy Writer",
+      "role": "writer",
+      "purpose": "Document the backup strategy",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Document the backup strategy with: backup types and schedules, retention policies, storage locations (local, cloud, offsite), estimated storage requirements, restoration procedures, testing schedule, monitoring and alerting, and disaster recovery runbook. Include cost estimates."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Design Strategy",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Document",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "data_types",
+    "requirements"
+  ],
+  "suggestion_card": {
+    "title": "Backup Planner",
+    "subtitle": "Design backup strategies",
+    "prompt_template": "Plan a backup strategy for [data types]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

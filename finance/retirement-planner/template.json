@@ -1,0 +1,58 @@
+{
+  "id": "retirement-planner",
+  "name": "Retirement Calculator",
+  "category": "finance",
+  "description": "Calculate retirement projections and savings targets",
+  "keywords": [
+    "retirement",
+    "savings",
+    "401k",
+    "IRA",
+    "compound",
+    "future"
+  ],
+  "agents": [
+    {
+      "name": "Retirement Analyst",
+      "role": "analyst",
+      "purpose": "Calculate retirement projections",
+      "tools": [],
+      "system_prompt_hint": "Calculate retirement projections based on: current savings, monthly contributions, expected return rate, inflation, retirement age, and desired retirement income. Model multiple scenarios (conservative, moderate, aggressive)."
+    },
+    {
+      "name": "Retirement Advisor",
+      "role": "advisor",
+      "purpose": "Provide retirement planning advice",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a retirement planning report with: projected retirement balance at target age, monthly income in retirement, savings gap analysis, recommended contribution increases, account type optimization (401k vs IRA vs taxable), and Social Security considerations. Include multiple scenario projections. Add financial disclaimer."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Calculate Projections",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Advise",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "current_savings",
+    "monthly_contribution",
+    "retirement_age"
+  ],
+  "suggestion_card": {
+    "title": "Retirement Planner",
+    "subtitle": "Plan your retirement",
+    "prompt_template": "Plan retirement: [age], [savings], [contributions]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

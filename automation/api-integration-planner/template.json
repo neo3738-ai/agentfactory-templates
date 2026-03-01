@@ -1,0 +1,59 @@
+{
+  "id": "api-integration-planner",
+  "name": "API Integration Planner",
+  "category": "automation",
+  "description": "Plan API integrations between services with authentication and error handling",
+  "keywords": [
+    "api",
+    "integration",
+    "connect",
+    "webhook",
+    "oauth",
+    "service"
+  ],
+  "agents": [
+    {
+      "name": "Integration Analyst",
+      "role": "analyst",
+      "purpose": "Analyze APIs and plan the integration",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research both APIs: authentication methods, rate limits, endpoints needed, data formats, webhook capabilities, and SDKs available. Identify the optimal integration approach."
+    },
+    {
+      "name": "Integration Planner",
+      "role": "architect",
+      "purpose": "Create a detailed integration plan",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create an integration plan with: authentication setup (API keys, OAuth flow), endpoint mapping, request/response examples, rate limit handling, retry and error handling strategy, data transformation layer, testing approach, and monitoring. Include code snippets for key operations."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research APIs",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Plan Integration",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "service_a",
+    "service_b"
+  ],
+  "suggestion_card": {
+    "title": "Integration Planner",
+    "subtitle": "Plan API integrations",
+    "prompt_template": "Plan integration between [service A] and [service B]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

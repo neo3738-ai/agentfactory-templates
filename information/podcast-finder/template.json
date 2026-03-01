@@ -1,0 +1,58 @@
+{
+  "id": "podcast-finder",
+  "name": "Podcast Episode Finder",
+  "category": "information",
+  "description": "Find and summarize relevant podcast episodes on any topic",
+  "keywords": [
+    "podcast",
+    "episode",
+    "listen",
+    "audio",
+    "show",
+    "interview"
+  ],
+  "agents": [
+    {
+      "name": "Podcast Searcher",
+      "role": "researcher",
+      "purpose": "Search for relevant podcast episodes",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Search podcast directories and review sites for episodes about the specified topic. Find episode titles, show names, guest names, duration, and descriptions."
+    },
+    {
+      "name": "Episode Curator",
+      "role": "writer",
+      "purpose": "Curate a listening list with summaries",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a curated listening list. For each episode include: show name, episode title, guest, duration, key topics covered, and a brief summary. Rank by relevance."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Search Podcasts",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Curate List",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "topic"
+  ],
+  "suggestion_card": {
+    "title": "Podcast Finder",
+    "subtitle": "Find podcast episodes on any topic",
+    "prompt_template": "Find podcasts about [topic]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

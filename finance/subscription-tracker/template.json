@@ -1,0 +1,56 @@
+{
+  "id": "subscription-tracker",
+  "name": "Subscription Tracker",
+  "category": "finance",
+  "description": "Track all subscriptions and find savings opportunities",
+  "keywords": [
+    "subscription",
+    "recurring",
+    "cancel",
+    "save",
+    "monthly",
+    "annual"
+  ],
+  "agents": [
+    {
+      "name": "Subscription Analyst",
+      "role": "analyst",
+      "purpose": "Analyze subscriptions for savings opportunities",
+      "tools": [],
+      "system_prompt_hint": "Catalog all subscriptions with: name, cost, billing cycle, and usage estimate. Calculate total monthly and annual spend. Identify overlapping services, underused subscriptions, and available cheaper alternatives."
+    },
+    {
+      "name": "Savings Advisor",
+      "role": "advisor",
+      "purpose": "Recommend subscription optimizations",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a subscription audit report with: complete subscription inventory, total monthly/annual costs, underused subscriptions to cancel, services to downgrade, cheaper alternatives, annual vs monthly savings opportunities, and projected annual savings."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Subscriptions",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Recommend",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "subscriptions"
+  ],
+  "suggestion_card": {
+    "title": "Subscription Tracker",
+    "subtitle": "Find subscription savings",
+    "prompt_template": "Audit my subscriptions: [list of subscriptions]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

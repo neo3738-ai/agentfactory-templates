@@ -1,0 +1,54 @@
+{
+  "id": "writing-tutor",
+  "name": "Writing Coach",
+  "category": "learning",
+  "description": "Get feedback and coaching on your writing skills",
+  "keywords": [
+    "writing",
+    "grammar",
+    "style",
+    "feedback",
+    "improve",
+    "essay"
+  ],
+  "agents": [
+    {
+      "name": "Writing Reviewer",
+      "role": "teacher",
+      "purpose": "Review writing and provide constructive feedback",
+      "tools": [],
+      "system_prompt_hint": "Review the writing for: clarity, structure, grammar, style, voice, and persuasiveness. Identify both strengths and areas for improvement. Be constructive and encouraging."
+    },
+    {
+      "name": "Writing Coach",
+      "role": "coach",
+      "purpose": "Provide specific improvement suggestions with examples",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Provide a detailed writing review with: overall assessment, specific praise for what works well, grammar/spelling corrections, style suggestions with before/after examples, structural recommendations, voice and tone notes, and 3 specific exercises to improve identified weak areas."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Review Writing",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Coach",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Writing Coach",
+    "subtitle": "Improve your writing skills",
+    "prompt_template": "Review my writing: [paste text]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

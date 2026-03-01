@@ -1,0 +1,59 @@
+{
+  "id": "ad-copy-writer",
+  "name": "Ad Copy Writer",
+  "category": "content",
+  "description": "Write persuasive ad copy for multiple platforms",
+  "keywords": [
+    "ad",
+    "copy",
+    "advertising",
+    "marketing",
+    "campaign",
+    "conversion"
+  ],
+  "agents": [
+    {
+      "name": "Audience Researcher",
+      "role": "researcher",
+      "purpose": "Research the target audience and competition",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the target audience demographics, pain points, and desires. Analyze competitor ads. Identify winning hooks and angles for the product/service."
+    },
+    {
+      "name": "Copywriter",
+      "role": "writer",
+      "purpose": "Write compelling ad copy variants",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write ad copy variants for: Google Ads (headlines + descriptions), Facebook/Instagram ads, and LinkedIn ads. Include multiple headline variants, CTAs, and A/B test suggestions. Follow platform character limits."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Audience",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Copy",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "product",
+    "audience"
+  ],
+  "suggestion_card": {
+    "title": "Ad Copy Writer",
+    "subtitle": "Write ads for any platform",
+    "prompt_template": "Write ad copy for [product] targeting [audience]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

@@ -1,0 +1,44 @@
+{
+  "id": "regex-builder",
+  "name": "Regex Builder",
+  "category": "development",
+  "description": "Build and explain regular expressions for any pattern",
+  "keywords": [
+    "regex",
+    "regular expression",
+    "pattern",
+    "match",
+    "parse",
+    "extract"
+  ],
+  "agents": [
+    {
+      "name": "Regex Engineer",
+      "role": "developer",
+      "purpose": "Build and explain regular expressions",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Build a regex pattern for the user's requirements. Provide: the regex pattern, a plain-English explanation of each part, test cases that match, test cases that don't match, edge cases to consider, and variants for different regex engines (PCRE, JavaScript, Python). Include common gotchas."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Build Regex",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "pattern_description"
+  ],
+  "suggestion_card": {
+    "title": "Regex Builder",
+    "subtitle": "Build and test regex patterns",
+    "prompt_template": "Build a regex to match [pattern]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}
