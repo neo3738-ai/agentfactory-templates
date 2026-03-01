@@ -1,5 +1,7 @@
 {
   "version": 1,
+  "updated_at": "2026-03-01T05:43:42Z",
+  "repo_url": "https://github.com/neo3738-ai/agentfactory-templates",
   "templates": [
     {
       "id": "blog-writer",
