@@ -1,0 +1,54 @@
+{
+  "id": "db-schema-designer",
+  "name": "Database Schema Designer",
+  "category": "development",
+  "description": "Design database schemas with tables, relationships, and indexes",
+  "keywords": [
+    "database",
+    "schema",
+    "sql",
+    "tables",
+    "migration",
+    "ERD"
+  ],
+  "agents": [
+    {
+      "name": "Schema Designer",
+      "role": "architect",
+      "purpose": "Design the database schema based on requirements",
+      "tools": [],
+      "system_prompt_hint": "Design a normalized database schema. Define tables, columns, types, constraints, primary keys, foreign keys, and indexes. Consider query patterns for performance. Follow normalization best practices."
+    },
+    {
+      "name": "Migration Writer",
+      "role": "developer",
+      "purpose": "Write SQL migration scripts",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write SQL migration scripts (CREATE TABLE, ALTER TABLE, CREATE INDEX). Include both up and down migrations. Add comments explaining design decisions."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Design Schema",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Migrations",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "DB Schema Designer",
+    "subtitle": "Design database schemas and migrations",
+    "prompt_template": "Design a database for [system]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

@@ -1,0 +1,55 @@
+{
+  "id": "weather-briefing",
+  "name": "Weather & Commute Briefing",
+  "category": "information",
+  "description": "Get a morning briefing with weather forecast and commute conditions",
+  "keywords": [
+    "weather",
+    "commute",
+    "morning",
+    "forecast",
+    "traffic"
+  ],
+  "agents": [
+    {
+      "name": "Weather Agent",
+      "role": "researcher",
+      "purpose": "Fetch current weather and forecast for user's location",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Fetch the weather forecast for the specified location. Include current conditions, high/low temps, precipitation chance, and 3-day outlook."
+    },
+    {
+      "name": "Briefing Writer",
+      "role": "writer",
+      "purpose": "Create a concise morning briefing",
+      "tools": [],
+      "system_prompt_hint": "Write a friendly, concise morning briefing. Include weather summary, what to wear, and any weather alerts. Keep it under 200 words."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Get Weather",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Briefing",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 6 * * *",
+  "user_fields": [
+    "location"
+  ],
+  "suggestion_card": {
+    "title": "Morning Briefing",
+    "subtitle": "Weather and commute every morning",
+    "prompt_template": "Morning briefing for [city]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

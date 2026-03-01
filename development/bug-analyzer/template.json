@@ -1,0 +1,56 @@
+{
+  "id": "bug-analyzer",
+  "name": "Bug Report Analyzer",
+  "category": "development",
+  "description": "Analyze bug reports and suggest likely causes and fixes",
+  "keywords": [
+    "bug",
+    "debug",
+    "error",
+    "fix",
+    "diagnose",
+    "troubleshoot"
+  ],
+  "agents": [
+    {
+      "name": "Bug Analyst",
+      "role": "analyst",
+      "purpose": "Analyze the bug report and identify likely root causes",
+      "tools": [
+        "file_read"
+      ],
+      "system_prompt_hint": "Analyze the bug report. Identify likely root causes based on symptoms. Check related code if paths are provided. Consider common patterns that cause similar bugs."
+    },
+    {
+      "name": "Fix Advisor",
+      "role": "advisor",
+      "purpose": "Suggest fixes and prevention strategies",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Suggest specific fixes ranked by likelihood. Include code snippets where possible. Recommend tests to prevent regression. Suggest related areas to check."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Bug",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Suggest Fixes",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Bug Analyzer",
+    "subtitle": "Diagnose bugs and get fix suggestions",
+    "prompt_template": "Debug this issue: [error description]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

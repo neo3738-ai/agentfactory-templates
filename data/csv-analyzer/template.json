@@ -1,0 +1,56 @@
+{
+  "id": "csv-analyzer",
+  "name": "CSV Data Analyzer",
+  "category": "data",
+  "description": "Analyze CSV data and extract insights",
+  "keywords": [
+    "csv",
+    "data",
+    "analyze",
+    "spreadsheet",
+    "excel",
+    "stats"
+  ],
+  "agents": [
+    {
+      "name": "Data Analyzer",
+      "role": "analyst",
+      "purpose": "Analyze CSV data for patterns and statistics",
+      "tools": [
+        "file_read"
+      ],
+      "system_prompt_hint": "Analyze the CSV data. Calculate summary statistics (mean, median, min, max, std). Identify trends, outliers, and correlations. Group and aggregate data meaningfully."
+    },
+    {
+      "name": "Insight Writer",
+      "role": "writer",
+      "purpose": "Write a data analysis report with key insights",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a clear data analysis report. Include: summary statistics, key findings, trends, anomalies, and actionable recommendations. Use tables to present numbers clearly."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Data",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Report",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "CSV Analyzer",
+    "subtitle": "Analyze data and get insights",
+    "prompt_template": "Analyze this data: [paste CSV or describe]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

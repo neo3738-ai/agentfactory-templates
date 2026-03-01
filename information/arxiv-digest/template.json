@@ -1,0 +1,58 @@
+{
+  "id": "arxiv-digest",
+  "name": "ArXiv Paper Digest",
+  "category": "information",
+  "description": "Get daily summaries of new papers in your research areas",
+  "keywords": [
+    "arxiv",
+    "papers",
+    "academic",
+    "research",
+    "science",
+    "digest"
+  ],
+  "agents": [
+    {
+      "name": "Paper Fetcher",
+      "role": "researcher",
+      "purpose": "Fetch recent papers from ArXiv in specified categories",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Fetch recent papers from ArXiv API for the specified categories. Get titles, abstracts, authors, and links."
+    },
+    {
+      "name": "Paper Summarizer",
+      "role": "writer",
+      "purpose": "Create readable summaries of academic papers",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Summarize each paper in 2-3 sentences. Group by topic. Highlight breakthrough findings and practical applications."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Fetch Papers",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Summarize",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 8 * * *",
+  "user_fields": [
+    "categories"
+  ],
+  "suggestion_card": {
+    "title": "ArXiv Digest",
+    "subtitle": "Daily summaries of new research papers",
+    "prompt_template": "Get me new AI papers from ArXiv"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

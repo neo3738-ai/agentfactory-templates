@@ -1,0 +1,58 @@
+{
+  "id": "stock-research",
+  "name": "Stock Research Report",
+  "category": "finance",
+  "description": "Research a stock and get a comprehensive analysis",
+  "keywords": [
+    "stock",
+    "invest",
+    "market",
+    "ticker",
+    "analysis",
+    "trade"
+  ],
+  "agents": [
+    {
+      "name": "Stock Researcher",
+      "role": "researcher",
+      "purpose": "Gather financial data and news about a stock",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the stock. Find recent price action, financial metrics (P/E, revenue, earnings), recent news, analyst ratings, and sector performance. Use financial news sites and data providers."
+    },
+    {
+      "name": "Stock Analyst",
+      "role": "analyst",
+      "purpose": "Analyze the stock and provide an investment thesis",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Analyze the stock data. Provide: company overview, financial health, competitive position, growth catalysts, risks, and a balanced thesis. Include a disclaimer that this is not financial advice."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Analyze",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "ticker"
+  ],
+  "suggestion_card": {
+    "title": "Stock Research",
+    "subtitle": "Get a comprehensive stock analysis",
+    "prompt_template": "Research [ticker] stock"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

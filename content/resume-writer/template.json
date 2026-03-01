@@ -1,0 +1,54 @@
+{
+  "id": "resume-writer",
+  "name": "Resume & Cover Letter Writer",
+  "category": "content",
+  "description": "Write or improve resumes and cover letters for job applications",
+  "keywords": [
+    "resume",
+    "cv",
+    "cover letter",
+    "job",
+    "application",
+    "career"
+  ],
+  "agents": [
+    {
+      "name": "Resume Optimizer",
+      "role": "writer",
+      "purpose": "Write or improve a resume tailored to a specific role",
+      "tools": [],
+      "system_prompt_hint": "Create or improve a resume. Tailor it to the target role. Use strong action verbs, quantify achievements, and follow modern resume best practices. ATS-friendly formatting."
+    },
+    {
+      "name": "Cover Letter Writer",
+      "role": "writer",
+      "purpose": "Write a compelling cover letter",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a cover letter that connects the candidate's experience to the job requirements. Show enthusiasm and cultural fit. Keep it to one page."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Optimize Resume",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Cover Letter",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Resume Writer",
+    "subtitle": "Write resumes and cover letters",
+    "prompt_template": "Write a resume for a [role] position at [company]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

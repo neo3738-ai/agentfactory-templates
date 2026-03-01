@@ -1,0 +1,40 @@
+{
+  "id": "email-drafter",
+  "name": "Email Draft Assistant",
+  "category": "content",
+  "description": "Draft professional emails based on your description",
+  "keywords": [
+    "email",
+    "draft",
+    "write",
+    "reply",
+    "compose",
+    "message"
+  ],
+  "agents": [
+    {
+      "name": "Email Drafter",
+      "role": "writer",
+      "purpose": "Draft a professional email based on the user's description",
+      "tools": [],
+      "system_prompt_hint": "Draft a clear, professional email. Match the tone to the context (formal for business, friendly for colleagues). Include subject line."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Draft Email",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Email Drafter",
+    "subtitle": "Draft professional emails quickly",
+    "prompt_template": "Draft an email to [recipient] about [topic]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

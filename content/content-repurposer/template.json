@@ -1,0 +1,55 @@
+{
+  "id": "content-repurposer",
+  "name": "Content Repurposer",
+  "category": "content",
+  "description": "Turn one piece of content into multiple formats",
+  "keywords": [
+    "repurpose",
+    "convert",
+    "transform",
+    "content",
+    "format"
+  ],
+  "agents": [
+    {
+      "name": "Content Analyzer",
+      "role": "analyst",
+      "purpose": "Analyze the source content and extract key points",
+      "tools": [
+        "file_read"
+      ],
+      "system_prompt_hint": "Read and analyze the source content. Extract key points, quotes, statistics, and main arguments. Identify the core message."
+    },
+    {
+      "name": "Content Transformer",
+      "role": "writer",
+      "purpose": "Transform content into multiple formats",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Transform the analyzed content into: a Twitter thread, a LinkedIn post, a blog summary, an email snippet, and bullet points. Maintain the core message across all formats."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Transform",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Content Repurposer",
+    "subtitle": "Turn one piece into many formats",
+    "prompt_template": "Repurpose this content into multiple formats: [content]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

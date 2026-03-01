@@ -1,0 +1,56 @@
+{
+  "id": "git-changelog",
+  "name": "Changelog Generator",
+  "category": "development",
+  "description": "Generate changelogs from git commit history",
+  "keywords": [
+    "changelog",
+    "release",
+    "git",
+    "commit",
+    "version",
+    "notes"
+  ],
+  "agents": [
+    {
+      "name": "Commit Analyzer",
+      "role": "analyst",
+      "purpose": "Analyze git commits and categorize changes",
+      "tools": [
+        "shell"
+      ],
+      "system_prompt_hint": "Read the git log output. Categorize commits into: Features, Bug Fixes, Improvements, Breaking Changes. Identify the most impactful changes."
+    },
+    {
+      "name": "Changelog Writer",
+      "role": "writer",
+      "purpose": "Write a formatted changelog",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a professional changelog in Keep a Changelog format. Group by category. Write user-friendly descriptions (not raw commit messages). Highlight breaking changes."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Commits",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Changelog",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Changelog Generator",
+    "subtitle": "Generate changelogs from git history",
+    "prompt_template": "Generate a changelog from recent commits"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

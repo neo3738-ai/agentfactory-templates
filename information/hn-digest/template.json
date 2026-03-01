@@ -1,0 +1,55 @@
+{
+  "id": "hn-digest",
+  "name": "Hacker News Daily Digest",
+  "category": "information",
+  "description": "Get a daily digest of top Hacker News stories and discussions",
+  "keywords": [
+    "hacker news",
+    "hn",
+    "tech",
+    "digest",
+    "startup"
+  ],
+  "agents": [
+    {
+      "name": "HN Fetcher",
+      "role": "researcher",
+      "purpose": "Fetch top stories from Hacker News",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Fetch the top 30 stories from Hacker News API. Get titles, scores, comment counts, and URLs."
+    },
+    {
+      "name": "HN Summarizer",
+      "role": "writer",
+      "purpose": "Create a readable HN digest",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a digest grouped by category (tech, startups, science, etc). Include story titles, brief descriptions, and links."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Fetch HN",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Digest",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 18 * * *",
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "HN Digest",
+    "subtitle": "Top Hacker News stories daily",
+    "prompt_template": "Get me today's top Hacker News stories"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

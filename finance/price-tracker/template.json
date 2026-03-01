@@ -1,0 +1,60 @@
+{
+  "id": "price-tracker",
+  "name": "Price Tracker",
+  "category": "finance",
+  "description": "Track prices on products and get notified of drops",
+  "keywords": [
+    "price",
+    "track",
+    "deal",
+    "discount",
+    "sale",
+    "cheap",
+    "buy"
+  ],
+  "agents": [
+    {
+      "name": "Price Checker",
+      "role": "fetcher",
+      "purpose": "Check current prices on specified products",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Fetch the product page and extract the current price. Note any sale prices, coupon codes, or availability changes."
+    },
+    {
+      "name": "Deal Analyzer",
+      "role": "analyst",
+      "purpose": "Analyze price history and determine if it's a good deal",
+      "tools": [
+        "file_read",
+        "file_write"
+      ],
+      "system_prompt_hint": "Compare the current price with previously saved prices. Report price changes, trends, and whether now is a good time to buy."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Check Prices",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Analyze Deals",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 10 * * *",
+  "user_fields": [
+    "urls"
+  ],
+  "suggestion_card": {
+    "title": "Price Tracker",
+    "subtitle": "Track product prices and find deals",
+    "prompt_template": "Track the price of [product] at [url]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

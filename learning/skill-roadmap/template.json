@@ -1,0 +1,58 @@
+{
+  "id": "skill-roadmap",
+  "name": "Learning Roadmap Builder",
+  "category": "learning",
+  "description": "Build a structured learning roadmap for any skill",
+  "keywords": [
+    "roadmap",
+    "learn",
+    "skill",
+    "path",
+    "curriculum",
+    "career"
+  ],
+  "agents": [
+    {
+      "name": "Skill Mapper",
+      "role": "researcher",
+      "purpose": "Research the skill landscape and best learning paths",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the best learning path for the specified skill. Identify prerequisites, core topics, advanced topics, and recommended resources (courses, books, projects)."
+    },
+    {
+      "name": "Roadmap Builder",
+      "role": "planner",
+      "purpose": "Build a structured learning roadmap with milestones",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Build a week-by-week learning roadmap. Include: milestones, specific resources for each phase, hands-on projects, and assessment checkpoints. Estimate time commitment per week."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Path",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Build Roadmap",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "skill"
+  ],
+  "suggestion_card": {
+    "title": "Learning Roadmap",
+    "subtitle": "Build a roadmap to learn any skill",
+    "prompt_template": "Create a learning roadmap for [skill]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

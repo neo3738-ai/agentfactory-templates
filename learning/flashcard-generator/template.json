@@ -1,0 +1,58 @@
+{
+  "id": "flashcard-generator",
+  "name": "Flashcard Generator",
+  "category": "learning",
+  "description": "Generate study flashcards from any topic or material",
+  "keywords": [
+    "flashcard",
+    "study",
+    "learn",
+    "quiz",
+    "memorize",
+    "cards"
+  ],
+  "agents": [
+    {
+      "name": "Content Researcher",
+      "role": "researcher",
+      "purpose": "Research the topic to create accurate flashcard content",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the topic. Identify the key concepts, definitions, facts, and relationships that should be memorized."
+    },
+    {
+      "name": "Flashcard Creator",
+      "role": "writer",
+      "purpose": "Create effective flashcards from the research",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create flashcards in Q&A format. Each card should test one concept. Use clear, concise language. Include mnemonics where helpful."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Create Cards",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "topic"
+  ],
+  "suggestion_card": {
+    "title": "Flashcard Generator",
+    "subtitle": "Create study flashcards on any topic",
+    "prompt_template": "Create flashcards about [topic]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

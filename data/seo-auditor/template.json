@@ -1,0 +1,58 @@
+{
+  "id": "seo-auditor",
+  "name": "SEO Auditor",
+  "category": "data",
+  "description": "Audit a website's SEO and get improvement recommendations",
+  "keywords": [
+    "seo",
+    "audit",
+    "search",
+    "ranking",
+    "google",
+    "optimize"
+  ],
+  "agents": [
+    {
+      "name": "SEO Scanner",
+      "role": "researcher",
+      "purpose": "Scan a website for SEO factors",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Scan the website. Check: title tags, meta descriptions, headings, image alt text, page speed indicators, mobile friendliness, internal links, and content quality."
+    },
+    {
+      "name": "SEO Advisor",
+      "role": "advisor",
+      "purpose": "Provide SEO improvement recommendations",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Provide a prioritized list of SEO improvements. Score current performance. Include: quick wins, medium-term fixes, and long-term strategy. Explain the impact of each recommendation."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Scan Site",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Recommendations",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "url"
+  ],
+  "suggestion_card": {
+    "title": "SEO Auditor",
+    "subtitle": "Audit your site's SEO health",
+    "prompt_template": "Audit the SEO of [url]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

@@ -1,0 +1,56 @@
+{
+  "id": "log-analyzer",
+  "name": "Log File Analyzer",
+  "category": "data",
+  "description": "Analyze application logs to find errors and patterns",
+  "keywords": [
+    "log",
+    "error",
+    "analyze",
+    "debug",
+    "server",
+    "application"
+  ],
+  "agents": [
+    {
+      "name": "Log Parser",
+      "role": "analyst",
+      "purpose": "Parse and analyze log files for errors and patterns",
+      "tools": [
+        "file_read"
+      ],
+      "system_prompt_hint": "Parse the log data. Identify error types and frequencies. Find patterns in timing, endpoints, or user actions that correlate with errors. Note any cascading failures."
+    },
+    {
+      "name": "Incident Reporter",
+      "role": "writer",
+      "purpose": "Write an incident analysis report",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write an incident report. Include: timeline of events, root cause analysis, affected services, error frequency charts, and recommended fixes prioritized by severity."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Parse Logs",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Report",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Log Analyzer",
+    "subtitle": "Find errors and patterns in logs",
+    "prompt_template": "Analyze these logs for errors: [paste logs]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

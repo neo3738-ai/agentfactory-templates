@@ -1,0 +1,58 @@
+{
+  "id": "blog-writer",
+  "name": "Blog Post Writer",
+  "category": "content",
+  "description": "Research a topic and write a blog post about it",
+  "keywords": [
+    "blog",
+    "write",
+    "post",
+    "article",
+    "draft"
+  ],
+  "agents": [
+    {
+      "name": "Topic Researcher",
+      "role": "researcher",
+      "purpose": "Research the topic to provide factual backing for the blog post",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the given topic. Find key facts, statistics, examples, and quotes that would make a compelling blog post."
+    },
+    {
+      "name": "Blog Writer",
+      "role": "writer",
+      "purpose": "Write an engaging blog post from the research",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write an engaging blog post with a compelling intro, well-structured body, and strong conclusion. Use the research to back up points."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "topic",
+    "style"
+  ],
+  "suggestion_card": {
+    "title": "Blog Post Writer",
+    "subtitle": "Research and write a blog post on any topic",
+    "prompt_template": "Write a blog post about [topic]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

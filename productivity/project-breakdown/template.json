@@ -1,0 +1,54 @@
+{
+  "id": "project-breakdown",
+  "name": "Project Breakdown",
+  "category": "productivity",
+  "description": "Break a large project into manageable tasks and milestones",
+  "keywords": [
+    "project",
+    "breakdown",
+    "tasks",
+    "milestones",
+    "plan",
+    "decompose"
+  ],
+  "agents": [
+    {
+      "name": "Project Analyst",
+      "role": "analyst",
+      "purpose": "Analyze the project scope and identify major components",
+      "tools": [],
+      "system_prompt_hint": "Break down the project into major components. Identify dependencies, risks, and required resources. Estimate relative effort for each component."
+    },
+    {
+      "name": "Task Creator",
+      "role": "planner",
+      "purpose": "Create detailed task lists with milestones",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a detailed task list from the analysis. Group tasks into milestones. Add estimated durations. Identify the critical path. Format as a project plan."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Scope",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Create Tasks",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Project Breakdown",
+    "subtitle": "Break big projects into small tasks",
+    "prompt_template": "Break down this project: [project description]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

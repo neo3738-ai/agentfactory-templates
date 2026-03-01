@@ -1,0 +1,42 @@
+{
+  "id": "goal-setter",
+  "name": "SMART Goal Setter",
+  "category": "productivity",
+  "description": "Turn vague goals into SMART goals with action plans",
+  "keywords": [
+    "goal",
+    "smart",
+    "objective",
+    "plan",
+    "target",
+    "achieve"
+  ],
+  "agents": [
+    {
+      "name": "Goal Architect",
+      "role": "planner",
+      "purpose": "Transform vague goals into SMART goals with detailed action plans",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Take the user's goal and make it SMART (Specific, Measurable, Achievable, Relevant, Time-bound). Create milestones, define metrics for success, identify potential obstacles, and build a step-by-step action plan."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Set Goals",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Goal Setter",
+    "subtitle": "Turn goals into SMART action plans",
+    "prompt_template": "Help me set a goal for [objective]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

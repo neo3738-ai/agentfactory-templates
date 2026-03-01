@@ -1,0 +1,59 @@
+{
+  "id": "doc-generator",
+  "name": "Documentation Generator",
+  "category": "development",
+  "description": "Generate documentation for your codebase",
+  "keywords": [
+    "docs",
+    "documentation",
+    "generate",
+    "document",
+    "API",
+    "readme"
+  ],
+  "agents": [
+    {
+      "name": "Code Analyzer",
+      "role": "analyst",
+      "purpose": "Analyze code structure and extract documentation-relevant info",
+      "tools": [
+        "file_read",
+        "shell"
+      ],
+      "system_prompt_hint": "Analyze the codebase. Identify modules, functions, types, APIs. Extract comments, signatures, and usage patterns."
+    },
+    {
+      "name": "Doc Writer",
+      "role": "writer",
+      "purpose": "Write clear documentation from the analysis",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write clear, comprehensive documentation. Include overview, API reference, usage examples, and configuration details."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Code",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Docs",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "project_path"
+  ],
+  "suggestion_card": {
+    "title": "Doc Generator",
+    "subtitle": "Auto-generate documentation for your code",
+    "prompt_template": "Generate documentation for [project]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

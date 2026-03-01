@@ -1,0 +1,57 @@
+{
+  "id": "reddit-summarizer",
+  "name": "Reddit Thread Summarizer",
+  "category": "information",
+  "description": "Summarize Reddit threads or subreddit highlights",
+  "keywords": [
+    "reddit",
+    "subreddit",
+    "thread",
+    "summarize",
+    "r/"
+  ],
+  "agents": [
+    {
+      "name": "Reddit Fetcher",
+      "role": "researcher",
+      "purpose": "Fetch top posts and comments from specified subreddits",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Fetch the top posts from the specified subreddit. Get titles, scores, and top comments. Use the JSON API (append .json to URLs)."
+    },
+    {
+      "name": "Thread Summarizer",
+      "role": "writer",
+      "purpose": "Create concise summaries of Reddit discussions",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Summarize the Reddit content into a readable digest. Highlight top posts, interesting discussions, and community sentiment."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Fetch Reddit",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Summarize",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "subreddits"
+  ],
+  "suggestion_card": {
+    "title": "Reddit Digest",
+    "subtitle": "Get summaries of subreddit highlights",
+    "prompt_template": "Summarize top posts from r/technology"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

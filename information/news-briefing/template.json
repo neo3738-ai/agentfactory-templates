@@ -1,0 +1,59 @@
+{
+  "id": "news-briefing",
+  "name": "Daily Tech News Briefing",
+  "category": "information",
+  "description": "Get a summary of top tech news delivered to you",
+  "keywords": [
+    "news",
+    "briefing",
+    "daily",
+    "morning",
+    "tech",
+    "headlines"
+  ],
+  "agents": [
+    {
+      "name": "News Researcher",
+      "role": "researcher",
+      "purpose": "Find top tech news stories from configured sources",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Search for today's top tech news stories. Look at major tech news sources. Summarize headlines and key details."
+    },
+    {
+      "name": "News Summarizer",
+      "role": "writer",
+      "purpose": "Summarize news stories into a concise briefing",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Take the raw news data and create a well-formatted briefing with headlines, key points, and source links."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Summarize",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 9 * * *",
+  "user_fields": [
+    "topics",
+    "sources"
+  ],
+  "suggestion_card": {
+    "title": "Daily News Briefing",
+    "subtitle": "Get top stories summarized every morning",
+    "prompt_template": "Get me tech news every morning"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

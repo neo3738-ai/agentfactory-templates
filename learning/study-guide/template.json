@@ -1,0 +1,58 @@
+{
+  "id": "study-guide",
+  "name": "Study Guide Builder",
+  "category": "learning",
+  "description": "Build comprehensive study guides for exams or certifications",
+  "keywords": [
+    "study",
+    "guide",
+    "exam",
+    "certification",
+    "prepare",
+    "test"
+  ],
+  "agents": [
+    {
+      "name": "Curriculum Researcher",
+      "role": "researcher",
+      "purpose": "Research the exam/certification syllabus and key topics",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the exam syllabus and objectives. Identify all topics, subtopics, and their relative weights. Find recommended resources and common pitfalls."
+    },
+    {
+      "name": "Guide Writer",
+      "role": "writer",
+      "purpose": "Write a structured study guide",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a study guide organized by topic. Include key concepts, definitions, formulas, and practice questions. Suggest study schedule based on topic difficulty and weight."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Syllabus",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Guide",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "exam"
+  ],
+  "suggestion_card": {
+    "title": "Study Guide",
+    "subtitle": "Build study guides for any exam",
+    "prompt_template": "Build a study guide for [exam/certification]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

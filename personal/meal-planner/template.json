@@ -1,0 +1,57 @@
+{
+  "id": "meal-planner",
+  "name": "Weekly Meal Planner",
+  "category": "personal",
+  "description": "Plan meals for the week with recipes and grocery lists",
+  "keywords": [
+    "meal",
+    "recipe",
+    "food",
+    "cook",
+    "grocery",
+    "diet",
+    "nutrition"
+  ],
+  "agents": [
+    {
+      "name": "Meal Planner",
+      "role": "planner",
+      "purpose": "Create a weekly meal plan based on preferences",
+      "tools": [],
+      "system_prompt_hint": "Create a 7-day meal plan (breakfast, lunch, dinner). Consider the user's dietary preferences, budget, and cooking skill level. Vary cuisines and ingredients to avoid monotony."
+    },
+    {
+      "name": "Recipe & List Writer",
+      "role": "writer",
+      "purpose": "Write recipes and compile a grocery list",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write simple recipes for each planned meal. Include prep time, cook time, and serving size. Compile a consolidated grocery list organized by store section (produce, dairy, etc)."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Plan Meals",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Recipes & List",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 10 * * 0",
+  "user_fields": [
+    "dietary_preferences"
+  ],
+  "suggestion_card": {
+    "title": "Meal Planner",
+    "subtitle": "Plan meals and get grocery lists",
+    "prompt_template": "Plan my meals for the week, I like [preferences]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

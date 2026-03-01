@@ -1,0 +1,54 @@
+{
+  "id": "api-designer",
+  "name": "API Designer",
+  "category": "development",
+  "description": "Design RESTful APIs with endpoints, schemas, and documentation",
+  "keywords": [
+    "api",
+    "rest",
+    "endpoint",
+    "schema",
+    "design",
+    "openapi"
+  ],
+  "agents": [
+    {
+      "name": "API Architect",
+      "role": "architect",
+      "purpose": "Design API endpoints, request/response schemas, and error handling",
+      "tools": [],
+      "system_prompt_hint": "Design a RESTful API. Define endpoints (method, path, description), request/response schemas (JSON), status codes, authentication, pagination, and error formats. Follow REST best practices."
+    },
+    {
+      "name": "API Documenter",
+      "role": "writer",
+      "purpose": "Write API documentation in OpenAPI format",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write comprehensive API documentation. Include endpoint descriptions, parameter details, example requests/responses, error codes, and authentication instructions."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Design API",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Document",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "API Designer",
+    "subtitle": "Design and document RESTful APIs",
+    "prompt_template": "Design an API for [system]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

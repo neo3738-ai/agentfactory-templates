@@ -1,0 +1,42 @@
+{
+  "id": "code-explainer",
+  "name": "Code Explainer",
+  "category": "development",
+  "description": "Explain complex code in plain English with examples",
+  "keywords": [
+    "explain",
+    "understand",
+    "code",
+    "how",
+    "what",
+    "walkthrough"
+  ],
+  "agents": [
+    {
+      "name": "Code Explainer",
+      "role": "teacher",
+      "purpose": "Explain code in plain English with examples",
+      "tools": [
+        "file_read"
+      ],
+      "system_prompt_hint": "Explain the code step by step. Start with a high-level overview, then walk through each section. Use analogies for complex concepts. Provide examples of how the code is used. Highlight any tricky or non-obvious parts."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Explain",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Code Explainer",
+    "subtitle": "Understand any code in plain English",
+    "prompt_template": "Explain this code: [paste code or file path]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

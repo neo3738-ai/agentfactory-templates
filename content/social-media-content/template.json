@@ -1,0 +1,57 @@
+{
+  "id": "social-media-content",
+  "name": "Social Media Content Creator",
+  "category": "content",
+  "description": "Create engaging social media posts for multiple platforms",
+  "keywords": [
+    "social media",
+    "twitter",
+    "linkedin",
+    "instagram",
+    "post",
+    "content"
+  ],
+  "agents": [
+    {
+      "name": "Content Strategist",
+      "role": "strategist",
+      "purpose": "Plan the content angle and key messages for each platform",
+      "tools": [],
+      "system_prompt_hint": "Analyze the topic and create a content strategy. Determine key messages, angles, and platform-specific approaches for Twitter, LinkedIn, and Instagram."
+    },
+    {
+      "name": "Post Writer",
+      "role": "writer",
+      "purpose": "Write platform-optimized posts",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write posts optimized for each platform. Twitter: concise with hashtags. LinkedIn: professional and insightful. Instagram: engaging with emoji. Include relevant hashtags."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Strategize",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Posts",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "topic",
+    "platforms"
+  ],
+  "suggestion_card": {
+    "title": "Social Media Creator",
+    "subtitle": "Create posts for Twitter, LinkedIn, Instagram",
+    "prompt_template": "Create social media posts about [topic]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

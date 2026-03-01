@@ -1,0 +1,57 @@
+{
+  "id": "book-summarizer",
+  "name": "Book Summarizer",
+  "category": "learning",
+  "description": "Get detailed summaries and key takeaways from books",
+  "keywords": [
+    "book",
+    "summary",
+    "read",
+    "takeaway",
+    "key points"
+  ],
+  "agents": [
+    {
+      "name": "Book Researcher",
+      "role": "researcher",
+      "purpose": "Find comprehensive information about the book",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the book. Find: main thesis, chapter summaries, key arguments, notable quotes, and critical reviews. Look for author interviews about the book."
+    },
+    {
+      "name": "Summary Writer",
+      "role": "writer",
+      "purpose": "Write a detailed book summary with actionable takeaways",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a book summary with: overview, key themes, chapter-by-chapter highlights, notable quotes, actionable takeaways, and who should read it. Make it useful enough to capture the book's value."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Book",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Summarize",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "book_title"
+  ],
+  "suggestion_card": {
+    "title": "Book Summary",
+    "subtitle": "Get key takeaways from any book",
+    "prompt_template": "Summarize the book [title] by [author]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

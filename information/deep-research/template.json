@@ -1,0 +1,70 @@
+{
+  "id": "deep-research",
+  "name": "Deep Research Report",
+  "category": "information",
+  "description": "Research a topic in depth and produce a detailed report",
+  "keywords": [
+    "research",
+    "investigate",
+    "deep dive",
+    "report",
+    "analyze",
+    "study"
+  ],
+  "agents": [
+    {
+      "name": "Researcher",
+      "role": "researcher",
+      "purpose": "Gather comprehensive information on the given topic",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the topic thoroughly. Find multiple sources, key facts, different perspectives, and recent developments."
+    },
+    {
+      "name": "Analyst",
+      "role": "analyst",
+      "purpose": "Analyze gathered research and identify key insights",
+      "tools": [],
+      "system_prompt_hint": "Analyze the research data. Identify patterns, draw conclusions, and highlight the most important findings."
+    },
+    {
+      "name": "Report Writer",
+      "role": "writer",
+      "purpose": "Write a structured, detailed report from the analysis",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a comprehensive report with an executive summary, key findings, detailed analysis, and recommendations."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Analyze",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Report",
+      "agent_index": 2,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "topic"
+  ],
+  "suggestion_card": {
+    "title": "Deep Research",
+    "subtitle": "Get a detailed report on any topic",
+    "prompt_template": "Research [topic] and write a detailed report"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

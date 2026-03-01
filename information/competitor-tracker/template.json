@@ -1,0 +1,58 @@
+{
+  "id": "competitor-tracker",
+  "name": "Competitor Intelligence Tracker",
+  "category": "information",
+  "description": "Track competitor websites, pricing, and announcements",
+  "keywords": [
+    "competitor",
+    "competitive",
+    "intelligence",
+    "track",
+    "monitor",
+    "business"
+  ],
+  "agents": [
+    {
+      "name": "Competitor Scanner",
+      "role": "researcher",
+      "purpose": "Scan competitor websites for updates, pricing changes, and announcements",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Visit the competitor websites provided. Look for pricing pages, blog posts, product updates, and press releases. Note any changes or new information."
+    },
+    {
+      "name": "Intelligence Analyst",
+      "role": "analyst",
+      "purpose": "Analyze competitor data and produce actionable intelligence",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Analyze the competitor data. Compare pricing, features, and strategies. Highlight key threats and opportunities. Provide actionable recommendations."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Scan Competitors",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Analyze Intel",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 8 * * 1",
+  "user_fields": [
+    "competitor_urls"
+  ],
+  "suggestion_card": {
+    "title": "Competitor Tracker",
+    "subtitle": "Monitor competitor activity weekly",
+    "prompt_template": "Track competitors at [urls]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

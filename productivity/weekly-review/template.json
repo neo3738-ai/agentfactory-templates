@@ -1,0 +1,53 @@
+{
+  "id": "weekly-review",
+  "name": "Weekly Review & Planning",
+  "category": "productivity",
+  "description": "Review your week and plan the next one",
+  "keywords": [
+    "weekly",
+    "review",
+    "planning",
+    "reflection",
+    "goals"
+  ],
+  "agents": [
+    {
+      "name": "Week Reviewer",
+      "role": "analyst",
+      "purpose": "Analyze what was accomplished and what needs attention",
+      "tools": [],
+      "system_prompt_hint": "Review the past week's accomplishments and challenges. Identify what went well, what didn't, and lessons learned."
+    },
+    {
+      "name": "Week Planner",
+      "role": "planner",
+      "purpose": "Plan priorities and goals for the coming week",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Based on the review, plan the coming week. Set 3-5 priority goals. Identify key meetings and deadlines. Suggest focus areas for each day."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Review Week",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Plan Next Week",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 17 * * 5",
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Weekly Review",
+    "subtitle": "Reflect on your week and plan ahead",
+    "prompt_template": "Review my week and plan next week: [accomplishments and upcoming tasks]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

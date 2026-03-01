@@ -1,0 +1,53 @@
+{
+  "id": "brainstorm-facilitator",
+  "name": "Brainstorm Facilitator",
+  "category": "productivity",
+  "description": "Facilitate brainstorming sessions with structured idea generation",
+  "keywords": [
+    "brainstorm",
+    "ideas",
+    "creative",
+    "thinking",
+    "ideate"
+  ],
+  "agents": [
+    {
+      "name": "Idea Generator",
+      "role": "creative",
+      "purpose": "Generate diverse ideas using creative thinking techniques",
+      "tools": [],
+      "system_prompt_hint": "Generate ideas using multiple techniques: SCAMPER, random association, reverse thinking, and analogy. Aim for quantity first, then quality. Include wild ideas alongside practical ones."
+    },
+    {
+      "name": "Idea Evaluator",
+      "role": "analyst",
+      "purpose": "Evaluate and prioritize the generated ideas",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Evaluate each idea on feasibility, impact, and novelty. Group similar ideas. Identify the top 5 most promising ideas with reasoning. Suggest next steps for each."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Generate Ideas",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Evaluate",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Brainstorm",
+    "subtitle": "Generate and evaluate ideas",
+    "prompt_template": "Brainstorm ideas for [topic]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

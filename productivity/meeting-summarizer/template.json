@@ -1,0 +1,41 @@
+{
+  "id": "meeting-summarizer",
+  "name": "Meeting Notes Summarizer",
+  "category": "productivity",
+  "description": "Summarize meeting notes into action items and key decisions",
+  "keywords": [
+    "meeting",
+    "notes",
+    "summarize",
+    "action items",
+    "minutes"
+  ],
+  "agents": [
+    {
+      "name": "Notes Summarizer",
+      "role": "writer",
+      "purpose": "Extract key decisions, action items, and summaries from meeting notes",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Analyze the meeting notes. Extract: key decisions, action items (with owners if mentioned), important discussion points, and follow-ups."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Summarize",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Meeting Summarizer",
+    "subtitle": "Turn meeting notes into action items",
+    "prompt_template": "Summarize these meeting notes into action items"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

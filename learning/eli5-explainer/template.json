@@ -1,0 +1,40 @@
+{
+  "id": "eli5-explainer",
+  "name": "ELI5 Explainer",
+  "category": "learning",
+  "description": "Explain complex topics in simple terms anyone can understand",
+  "keywords": [
+    "eli5",
+    "simple",
+    "explain",
+    "easy",
+    "beginner",
+    "basics"
+  ],
+  "agents": [
+    {
+      "name": "Simple Explainer",
+      "role": "teacher",
+      "purpose": "Explain complex topics using simple language and analogies",
+      "tools": [],
+      "system_prompt_hint": "Explain the topic as if talking to a 5-year-old. Use everyday analogies, simple words, and concrete examples. Avoid jargon. Build up from basics to the key concept. Make it fun and memorable."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Explain",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "ELI5 Explainer",
+    "subtitle": "Complex topics made simple",
+    "prompt_template": "Explain [topic] like I'm 5"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

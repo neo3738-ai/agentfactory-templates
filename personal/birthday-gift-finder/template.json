@@ -1,0 +1,56 @@
+{
+  "id": "birthday-gift-finder",
+  "name": "Gift Idea Finder",
+  "category": "personal",
+  "description": "Find personalized gift ideas based on the recipient's interests",
+  "keywords": [
+    "gift",
+    "birthday",
+    "present",
+    "christmas",
+    "holiday",
+    "idea"
+  ],
+  "agents": [
+    {
+      "name": "Gift Researcher",
+      "role": "researcher",
+      "purpose": "Find gift ideas based on recipient's interests and budget",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research gift ideas matching the recipient's interests, age, and the specified budget. Find specific products with prices and links. Include a mix of practical, fun, and unique options."
+    },
+    {
+      "name": "Gift Curator",
+      "role": "writer",
+      "purpose": "Curate and present the best gift options",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Present the top 10 gift ideas organized by category. Include price, where to buy, and why it's a good fit. Add a personal touch recommendation for each."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Gifts",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Curate List",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Gift Finder",
+    "subtitle": "Find perfect gifts for anyone",
+    "prompt_template": "Find gift ideas for [person] who likes [interests], budget [amount]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

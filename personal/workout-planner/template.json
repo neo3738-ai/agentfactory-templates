@@ -1,0 +1,45 @@
+{
+  "id": "workout-planner",
+  "name": "Workout Planner",
+  "category": "personal",
+  "description": "Create personalized workout plans based on your goals",
+  "keywords": [
+    "workout",
+    "exercise",
+    "fitness",
+    "gym",
+    "training",
+    "health"
+  ],
+  "agents": [
+    {
+      "name": "Fitness Coach",
+      "role": "coach",
+      "purpose": "Design a personalized workout plan",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a workout plan tailored to the user's goals, fitness level, and available equipment. Include warm-up, main workout, and cool-down. Specify sets, reps, and rest times. Add progression suggestions."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Plan Workout",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "goals",
+    "equipment"
+  ],
+  "suggestion_card": {
+    "title": "Workout Planner",
+    "subtitle": "Get personalized workout plans",
+    "prompt_template": "Create a workout plan for [goal] with [equipment]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

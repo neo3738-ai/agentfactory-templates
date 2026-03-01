@@ -1,0 +1,43 @@
+{
+  "id": "language-tutor",
+  "name": "Language Practice Tutor",
+  "category": "personal",
+  "description": "Practice a foreign language with conversational exercises",
+  "keywords": [
+    "language",
+    "learn",
+    "practice",
+    "spanish",
+    "french",
+    "tutor"
+  ],
+  "agents": [
+    {
+      "name": "Language Tutor",
+      "role": "tutor",
+      "purpose": "Provide language practice through conversation and exercises",
+      "tools": [],
+      "system_prompt_hint": "Act as a patient language tutor. Conduct the conversation in the target language with English explanations. Correct mistakes gently. Introduce new vocabulary. Adjust difficulty to the learner's level."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Practice",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "language",
+    "level"
+  ],
+  "suggestion_card": {
+    "title": "Language Tutor",
+    "subtitle": "Practice any language conversationally",
+    "prompt_template": "Practice [language] with me, I'm a [beginner/intermediate]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

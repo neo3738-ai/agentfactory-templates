@@ -1,0 +1,53 @@
+{
+  "id": "survey-analyzer",
+  "name": "Survey Results Analyzer",
+  "category": "data",
+  "description": "Analyze survey responses and generate insight reports",
+  "keywords": [
+    "survey",
+    "feedback",
+    "responses",
+    "analyze",
+    "results"
+  ],
+  "agents": [
+    {
+      "name": "Response Analyzer",
+      "role": "analyst",
+      "purpose": "Analyze survey responses for patterns and sentiment",
+      "tools": [],
+      "system_prompt_hint": "Analyze the survey responses. Quantify results for multiple-choice questions. Analyze open-ended responses for themes and sentiment. Identify key pain points and positive feedback."
+    },
+    {
+      "name": "Report Writer",
+      "role": "writer",
+      "purpose": "Create a survey results report with visualizations",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a professional survey results report. Include: response rate, key metrics, theme analysis, notable quotes, and recommendations. Present data in tables and charts."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Responses",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Report",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Survey Analyzer",
+    "subtitle": "Analyze survey results and get insights",
+    "prompt_template": "Analyze these survey results: [data]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

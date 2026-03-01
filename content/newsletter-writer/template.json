@@ -1,0 +1,57 @@
+{
+  "id": "newsletter-writer",
+  "name": "Newsletter Writer",
+  "category": "content",
+  "description": "Research and write a newsletter on a topic",
+  "keywords": [
+    "newsletter",
+    "write",
+    "weekly",
+    "digest",
+    "curate"
+  ],
+  "agents": [
+    {
+      "name": "Content Curator",
+      "role": "researcher",
+      "purpose": "Find and curate interesting content for the newsletter",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Find the most interesting and relevant content for the newsletter topic. Look for news, trends, tools, and insights."
+    },
+    {
+      "name": "Newsletter Writer",
+      "role": "writer",
+      "purpose": "Write an engaging newsletter from curated content",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a newsletter with an intro, curated links with summaries, a featured deep-dive section, and a closing. Keep it scannable."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Curate",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 8 * * 5",
+  "user_fields": [
+    "topic"
+  ],
+  "suggestion_card": {
+    "title": "Newsletter Writer",
+    "subtitle": "Create a curated newsletter on any topic",
+    "prompt_template": "Write a newsletter about [topic]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

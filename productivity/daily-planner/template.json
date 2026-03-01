@@ -1,0 +1,43 @@
+{
+  "id": "daily-planner",
+  "name": "Daily Task Planner",
+  "category": "productivity",
+  "description": "Plan your day with prioritized tasks and time blocks",
+  "keywords": [
+    "plan",
+    "daily",
+    "task",
+    "schedule",
+    "organize",
+    "todo",
+    "planner"
+  ],
+  "agents": [
+    {
+      "name": "Day Planner",
+      "role": "planner",
+      "purpose": "Create a structured daily plan with priorities and time blocks",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a daily plan. Prioritize tasks by importance/urgency. Suggest time blocks. Include breaks. Be realistic about time estimates."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Plan Day",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 7 * * *",
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Daily Planner",
+    "subtitle": "Get a structured plan for your day",
+    "prompt_template": "Plan my day: [tasks]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

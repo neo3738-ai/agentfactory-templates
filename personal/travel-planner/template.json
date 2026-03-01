@@ -1,0 +1,59 @@
+{
+  "id": "travel-planner",
+  "name": "Travel Itinerary Planner",
+  "category": "personal",
+  "description": "Plan detailed travel itineraries with activities and logistics",
+  "keywords": [
+    "travel",
+    "trip",
+    "itinerary",
+    "vacation",
+    "plan",
+    "visit"
+  ],
+  "agents": [
+    {
+      "name": "Destination Researcher",
+      "role": "researcher",
+      "purpose": "Research the destination for activities, food, and logistics",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research the destination. Find top attractions, hidden gems, best restaurants, transportation options, and local tips. Note opening hours and prices."
+    },
+    {
+      "name": "Itinerary Builder",
+      "role": "planner",
+      "purpose": "Build a detailed day-by-day itinerary",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Build a day-by-day itinerary with morning/afternoon/evening activities. Include travel times between locations. Add restaurant recommendations for each meal. Include backup options for rainy days."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Build Itinerary",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "destination",
+    "dates"
+  ],
+  "suggestion_card": {
+    "title": "Travel Planner",
+    "subtitle": "Plan detailed travel itineraries",
+    "prompt_template": "Plan a trip to [destination] for [duration]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

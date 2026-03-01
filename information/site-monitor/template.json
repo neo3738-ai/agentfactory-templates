@@ -1,0 +1,60 @@
+{
+  "id": "site-monitor",
+  "name": "Website Monitor",
+  "category": "information",
+  "description": "Monitor a website for changes and get notified",
+  "keywords": [
+    "monitor",
+    "watch",
+    "track",
+    "site",
+    "website",
+    "changes",
+    "check"
+  ],
+  "agents": [
+    {
+      "name": "Web Fetcher",
+      "role": "fetcher",
+      "purpose": "Fetch the current content of a web page",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Fetch the specified web page and extract its main content. Note any prices, stock status, or key data points."
+    },
+    {
+      "name": "Change Detector",
+      "role": "analyst",
+      "purpose": "Compare fetched content against previous state and report changes",
+      "tools": [
+        "file_read",
+        "file_write"
+      ],
+      "system_prompt_hint": "Compare the current content with the previously saved version. Report any meaningful changes, new items, or price differences."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Fetch Page",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Detect Changes",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 */4 * * *",
+  "user_fields": [
+    "url"
+  ],
+  "suggestion_card": {
+    "title": "Website Monitor",
+    "subtitle": "Track changes on any webpage",
+    "prompt_template": "Monitor [url] for changes"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

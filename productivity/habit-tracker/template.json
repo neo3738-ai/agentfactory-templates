@@ -1,0 +1,42 @@
+{
+  "id": "habit-tracker",
+  "name": "Habit Tracker & Coach",
+  "category": "productivity",
+  "description": "Track habits and get coaching on building better routines",
+  "keywords": [
+    "habit",
+    "routine",
+    "track",
+    "streak",
+    "discipline",
+    "coach"
+  ],
+  "agents": [
+    {
+      "name": "Habit Coach",
+      "role": "coach",
+      "purpose": "Analyze habit data and provide coaching advice",
+      "tools": [],
+      "system_prompt_hint": "Review the user's habit tracking data. Identify streaks, missed days, and patterns. Provide motivational coaching, suggest improvements, and celebrate wins. Use behavioral science principles."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Coach",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 21 * * *",
+  "user_fields": [
+    "habits"
+  ],
+  "suggestion_card": {
+    "title": "Habit Coach",
+    "subtitle": "Track habits and get daily coaching",
+    "prompt_template": "Review my habits today: [habit status]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

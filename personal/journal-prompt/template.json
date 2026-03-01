@@ -1,0 +1,39 @@
+{
+  "id": "journal-prompt",
+  "name": "Daily Journal & Reflection",
+  "category": "personal",
+  "description": "Get thoughtful journal prompts and reflect on your day",
+  "keywords": [
+    "journal",
+    "reflect",
+    "diary",
+    "gratitude",
+    "mindfulness"
+  ],
+  "agents": [
+    {
+      "name": "Journal Guide",
+      "role": "coach",
+      "purpose": "Provide thoughtful journal prompts and facilitate reflection",
+      "tools": [],
+      "system_prompt_hint": "Provide 3 thoughtful journal prompts based on the user's context. One about gratitude, one about growth, one about intentions. After the user responds, provide insightful reflections."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Journal",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 21 * * *",
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Daily Journal",
+    "subtitle": "Guided journaling and reflection",
+    "prompt_template": "Guide me through today's journal entry"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

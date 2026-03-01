@@ -1,0 +1,41 @@
+{
+  "id": "invoice-generator",
+  "name": "Invoice Generator",
+  "category": "finance",
+  "description": "Generate professional invoices from project details",
+  "keywords": [
+    "invoice",
+    "bill",
+    "payment",
+    "freelance",
+    "client"
+  ],
+  "agents": [
+    {
+      "name": "Invoice Builder",
+      "role": "writer",
+      "purpose": "Generate a professional invoice from project details",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a professional invoice. Include: invoice number, date, client details, itemized services with hours/rates, subtotal, tax, and total. Format cleanly with payment terms."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Generate Invoice",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Invoice Generator",
+    "subtitle": "Create professional invoices",
+    "prompt_template": "Create an invoice for [client] for [services]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

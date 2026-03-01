@@ -1,0 +1,56 @@
+{
+  "id": "decision-matrix",
+  "name": "Decision Matrix Builder",
+  "category": "productivity",
+  "description": "Build a weighted decision matrix to compare options objectively",
+  "keywords": [
+    "decision",
+    "compare",
+    "matrix",
+    "pros cons",
+    "evaluate",
+    "choose"
+  ],
+  "agents": [
+    {
+      "name": "Options Researcher",
+      "role": "researcher",
+      "purpose": "Research each option and gather relevant data",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Research each option thoroughly. Find pricing, features, reviews, pros/cons. Create a comprehensive comparison dataset."
+    },
+    {
+      "name": "Matrix Builder",
+      "role": "analyst",
+      "purpose": "Build a weighted decision matrix with scoring",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Build a decision matrix. Define criteria with weights. Score each option 1-5 on each criterion. Calculate weighted totals. Provide a recommendation with reasoning."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Research Options",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Build Matrix",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Decision Matrix",
+    "subtitle": "Compare options with weighted criteria",
+    "prompt_template": "Help me decide between [options]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

@@ -1,0 +1,56 @@
+{
+  "id": "test-writer",
+  "name": "Test Suite Generator",
+  "category": "development",
+  "description": "Generate comprehensive test cases for your code",
+  "keywords": [
+    "test",
+    "testing",
+    "unit test",
+    "coverage",
+    "QA",
+    "spec"
+  ],
+  "agents": [
+    {
+      "name": "Code Analyzer",
+      "role": "analyst",
+      "purpose": "Analyze code to identify testable functions and edge cases",
+      "tools": [
+        "file_read"
+      ],
+      "system_prompt_hint": "Analyze the code. Identify all public functions, their inputs/outputs, edge cases, error conditions, and integration points that need testing."
+    },
+    {
+      "name": "Test Writer",
+      "role": "developer",
+      "purpose": "Write comprehensive test cases",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write unit tests covering: happy paths, edge cases, error handling, and boundary conditions. Follow testing best practices. Use descriptive test names."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Tests",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Test Generator",
+    "subtitle": "Generate test cases for your code",
+    "prompt_template": "Write tests for [code or function]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

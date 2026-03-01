@@ -1,0 +1,56 @@
+{
+  "id": "story-writer",
+  "name": "Short Story Writer",
+  "category": "content",
+  "description": "Write creative short stories from a prompt or theme",
+  "keywords": [
+    "story",
+    "fiction",
+    "creative",
+    "writing",
+    "narrative",
+    "tale"
+  ],
+  "agents": [
+    {
+      "name": "Story Planner",
+      "role": "planner",
+      "purpose": "Plan the story structure, characters, and plot",
+      "tools": [],
+      "system_prompt_hint": "Plan a compelling short story. Create characters with motivations, a plot with conflict and resolution, and a vivid setting. Keep it concise enough for a short story (1000-2000 words)."
+    },
+    {
+      "name": "Story Writer",
+      "role": "writer",
+      "purpose": "Write the short story from the plan",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write the short story following the plan. Use vivid descriptions, natural dialogue, and strong pacing. Show don't tell. Create an engaging opening and satisfying ending."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Plan Story",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Story",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "theme"
+  ],
+  "suggestion_card": {
+    "title": "Story Writer",
+    "subtitle": "Write creative short stories",
+    "prompt_template": "Write a short story about [theme]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

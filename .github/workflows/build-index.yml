@@ -1,0 +1,73 @@
+name: Build Template Index
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*/*/template.json'
+      - '.github/workflows/build-index.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build index.json
+        run: |
+          python3 - << 'PYEOF'
+          import json, os, glob
+
+          index = {"version": 1, "templates": [], "featured": []}
+          categories = set()
+
+          for tpath in sorted(glob.glob("*/*/template.json")):
+              parts = tpath.split("/")
+              category = parts[0]
+              template_id = parts[1]
+
+              try:
+                  with open(tpath) as f:
+                      t = json.load(f)
+              except Exception as e:
+                  print(f"SKIP {tpath}: {e}")
+                  continue
+
+              readme_path = os.path.join(category, template_id, "README.md")
+              has_readme = os.path.exists(readme_path)
+
+              entry = {
+                  "id": t.get("id", template_id),
+                  "name": t.get("name", template_id),
+                  "description": t.get("description", ""),
+                  "author": t.get("author", "community"),
+                  "category": t.get("category", category),
+                  "tags": t.get("tags", []),
+                  "agent_count": len(t.get("agents", [])),
+                  "download_url": f"{category}/{template_id}/template.json",
+                  "readme_url": f"{category}/{template_id}/README.md" if has_readme else None,
+              }
+
+              index["templates"].append(entry)
+              categories.add(entry["category"])
+
+          index["categories"] = sorted(list(categories))
+          index["total"] = len(index["templates"])
+
+          with open("index.json", "w") as f:
+              json.dump(index, f, indent=2)
+
+          print(f"Built index.json with {len(index['templates'])} templates across {len(categories)} categories")
+          PYEOF
+
+      - name: Commit index.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.json
+          git diff --cached --quiet || git commit -m "chore: rebuild index.json [skip ci]"
+          git push

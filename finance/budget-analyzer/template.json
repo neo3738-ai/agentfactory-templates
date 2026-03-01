@@ -1,0 +1,54 @@
+{
+  "id": "budget-analyzer",
+  "name": "Budget Analyzer",
+  "category": "finance",
+  "description": "Analyze spending habits and create budget recommendations",
+  "keywords": [
+    "budget",
+    "spending",
+    "money",
+    "expense",
+    "save",
+    "finance"
+  ],
+  "agents": [
+    {
+      "name": "Spending Analyzer",
+      "role": "analyst",
+      "purpose": "Analyze spending data and identify patterns",
+      "tools": [],
+      "system_prompt_hint": "Analyze the spending data. Categorize expenses (housing, food, transport, entertainment, etc). Identify unusual spending, trends, and areas of overspending."
+    },
+    {
+      "name": "Budget Advisor",
+      "role": "advisor",
+      "purpose": "Create budget recommendations and savings plan",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Create a recommended budget based on the 50/30/20 rule (needs/wants/savings). Suggest specific areas to cut. Set savings targets. Provide actionable tips for reducing each category."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Analyze Spending",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Budget Plan",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Budget Analyzer",
+    "subtitle": "Analyze spending and get budget advice",
+    "prompt_template": "Analyze my spending: [expenses]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

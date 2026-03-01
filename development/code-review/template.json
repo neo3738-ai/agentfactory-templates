@@ -1,0 +1,58 @@
+{
+  "id": "code-review",
+  "name": "Code Review Pipeline",
+  "category": "development",
+  "description": "Review code for bugs, style issues, and improvements",
+  "keywords": [
+    "code",
+    "review",
+    "PR",
+    "pull request",
+    "bugs",
+    "lint"
+  ],
+  "agents": [
+    {
+      "name": "Code Reader",
+      "role": "reader",
+      "purpose": "Read and understand the code to be reviewed",
+      "tools": [
+        "file_read"
+      ],
+      "system_prompt_hint": "Read the provided code carefully. Understand the logic, identify all functions, and note any immediate concerns."
+    },
+    {
+      "name": "Code Reviewer",
+      "role": "reviewer",
+      "purpose": "Review code for bugs, style issues, and improvements",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Review the code thoroughly. Check for bugs, security issues, performance problems, style inconsistencies, and suggest improvements."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Read Code",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Review",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": null,
+  "user_fields": [
+    "file_path"
+  ],
+  "suggestion_card": {
+    "title": "Code Review",
+    "subtitle": "Get your code reviewed for bugs and improvements",
+    "prompt_template": "Review the code in [file_path]"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}

@@ -1,0 +1,56 @@
+{
+  "id": "crypto-briefing",
+  "name": "Crypto Market Briefing",
+  "category": "finance",
+  "description": "Get a daily briefing on crypto market conditions",
+  "keywords": [
+    "crypto",
+    "bitcoin",
+    "ethereum",
+    "market",
+    "defi",
+    "web3"
+  ],
+  "agents": [
+    {
+      "name": "Crypto Scanner",
+      "role": "researcher",
+      "purpose": "Scan crypto market data and news",
+      "tools": [
+        "web_fetch"
+      ],
+      "system_prompt_hint": "Fetch current prices for top 10 cryptocurrencies. Check for major news, regulatory updates, and market-moving events. Note any significant price movements (>5%)."
+    },
+    {
+      "name": "Market Briefer",
+      "role": "writer",
+      "purpose": "Write a concise crypto market briefing",
+      "tools": [
+        "file_write"
+      ],
+      "system_prompt_hint": "Write a concise crypto market briefing. Include: market overview, top movers, key news, and sentiment analysis. Keep it factual and balanced."
+    }
+  ],
+  "pipeline_shape": [
+    {
+      "label": "Scan Market",
+      "agent_index": 0,
+      "input_mode": "FromPrevious"
+    },
+    {
+      "label": "Write Briefing",
+      "agent_index": 1,
+      "input_mode": "FromPrevious"
+    }
+  ],
+  "default_schedule": "0 8 * * *",
+  "user_fields": [],
+  "suggestion_card": {
+    "title": "Crypto Briefing",
+    "subtitle": "Daily crypto market overview",
+    "prompt_template": "Give me today's crypto market briefing"
+  },
+  "schema_version": 1,
+  "author": "agentfactory",
+  "tags": []
+}
