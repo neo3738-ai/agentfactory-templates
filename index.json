@@ -574,16 +574,7 @@
       "readme_url": "productivity/weekly-review/README.md"
     }
   ],
-  "featured": [
-    "deep-research",
-    "news-briefing",
-    "code-review",
-    "meal-planner",
-    "blog-writer",
-    "budget-analyzer",
-    "study-guide",
-    "csv-analyzer"
-  ],
+  "featured": [],
   "categories": [
     "content",
     "data",
