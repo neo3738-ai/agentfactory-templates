@@ -1,25 +1,12 @@
 {
   "version": 1,
-  "updated_at": "2026-03-01T00:00:00Z",
+  "updated_at": "2026-03-01T19:23:23Z",
   "repo_url": "https://github.com/neo3738-ai/agentfactory-templates",
   "featured": [
     "deep-research",
-    "code-review",
+    "code-reviewer",
     "story-writer"
   ],
-  "categories": [
-    "automation",
-    "business",
-    "content",
-    "data",
-    "development",
-    "finance",
-    "information",
-    "learning",
-    "personal",
-    "productivity"
-  ],
-  "total": 160,
   "templates": [
     {
       "id": "api-integration-planner",
@@ -556,7 +543,7 @@
       "agent_count": 2,
       "download_url": "content/story-writer/template.json",
       "readme_url": "content/story-writer/README.md",
-      "featured": true,
+      "featured": false,
       "rating_avg": 0.0,
       "rating_count": 0,
       "discussion_url": ""
@@ -931,7 +918,7 @@
       "agent_count": 2,
       "download_url": "development/code-review/template.json",
       "readme_url": "development/code-review/README.md",
-      "featured": true,
+      "featured": false,
       "rating_avg": 0.0,
       "rating_count": 0,
       "discussion_url": ""
@@ -1426,7 +1413,7 @@
       "agent_count": 3,
       "download_url": "information/deep-research/template.json",
       "readme_url": "information/deep-research/README.md",
-      "featured": true,
+      "featured": false,
       "rating_avg": 0.0,
       "rating_count": 0,
       "discussion_url": ""
@@ -2421,5 +2408,18 @@
       "rating_count": 0,
       "discussion_url": ""
     }
-  ]
+  ],
+  "categories": [
+    "automation",
+    "business",
+    "content",
+    "data",
+    "development",
+    "finance",
+    "information",
+    "learning",
+    "personal",
+    "productivity"
+  ],
+  "total": 160
 }
